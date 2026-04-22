@@ -183,6 +183,7 @@ export interface Project {
   tags: string[];
   github: string | null;
   live: string | null;
+  images?: string[];
 }
 
 export const projects: Project[] = [
@@ -212,6 +213,17 @@ export const projects: Project[] = [
     tags: ["React", "JavaScript", "Tailwind CSS", "REST API"],
     github: "https://github.com/WeGamers777/WeGamersFrint",
     live: null,
+  },
+
+  {
+    category: "E-COMMERCE MOBILE APP",
+    title: "Fashion E-commerce Mobile",
+    description:
+      "A modern fashion e-commerce mobile app built with React Native, Expo Router, TypeScript, and NativeWind, featuring product browsing, wishlist, cart, and an animated checkout flow.",
+    tags: ["React Native", "Expo Router", "TypeScript", "NativeWind"],
+    github: "https://github.com/TamarCoder/fashion-ecommerce-mobile",
+    live: null,
+    images: ["/projects/fashion-ecommerce-1.png", "/projects/fashion-ecommerce-2.png"],
   },
 ];
 
