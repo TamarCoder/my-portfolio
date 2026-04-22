@@ -243,8 +243,8 @@ export const projects: Project[] = [
     description:
       " ",
     tags: ["React Native", "Expo", "TypeScript", 'React Tailwind', 'React Typescript'],
-    github: " ",
-    live: null,
+    github: "https://github.com/TamarCoder/StreamX--Movie ",
+    live: "https://stream-x-movie-three.vercel.app/",
     images: [
       "/projects/Movie App/Screenshot 2026-04-22 at 3.55.54 PM.png",
       "/projects/Movie App/Screenshot 2026-04-22 at 3.56.04 PM.png",
