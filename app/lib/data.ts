@@ -237,6 +237,28 @@ export const projects: Project[] = [
       "/projects/Auth/Screenshot 2026-04-22 at 12.59.45 PM.png",
     ],
   },
+  {
+    category: "Movie App",
+    title: "Movie App",
+    description:
+      " ",
+    tags: ["React Native", "Expo", "TypeScript", 'React Tailwind', 'React Typescript'],
+    github: " ",
+    live: null,
+    images: [
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.55.54 PM.png",
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.56.04 PM.png",
+
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.52.14 PM.png",
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.53.01 PM.png",
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.54.01 PM.png",
+      "/projects/Movie App/Screenshot 2026-04-22 at 3.54.48 PM.png",
+
+    ],
+  },
+
+
+
 ];
 
 // ── Contact ─────────────────────────────────────────────────
