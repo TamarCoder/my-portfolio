@@ -246,13 +246,13 @@ export const projects: Project[] = [
     github: "https://github.com/TamarCoder/StreamX--Movie ",
     live: "https://stream-x-movie-three.vercel.app/",
     images: [
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.55.54 PM.png",
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.56.04 PM.png",
+      "/projects/Movies/Screenshot 2026-04-22 at 3.55.54 PM.png",
+      "/projects/MoviesScreenshot 2026-04-22 at 3.56.04 PM.png",
 
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.52.14 PM.png",
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.53.01 PM.png",
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.54.01 PM.png",
-      "/projects/Movie App/Screenshot 2026-04-22 at 3.54.48 PM.png",
+      "/projects/Movies/Screenshot 2026-04-22 at 3.52.14 PM.png",
+      "/projects/Movies/Screenshot 2026-04-22 at 3.53.01 PM.png",
+      "/projects/Movies/Screenshot 2026-04-22 at 3.54.01 PM.png",
+      "/projects/Movies/Screenshot 2026-04-22 at 3.54.48 PM.png",
 
     ],
   },
