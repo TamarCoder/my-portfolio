@@ -195,15 +195,11 @@ export const projects: Project[] = [
     tags: ["React Native", "Expo", "TypeScript", "PokeAPI"],
     github: "https://github.com/TamarCoder/Mobile-Pokedex-App-",
     live: null,
-  },
-  {
-    category: "MUSIC STREAMING PLATFORM",
-    title: "BeatFlow",
-    description:
-      "A music streaming web application with a modern UI. Built with React and Next.js on the frontend, featuring responsive layouts, audio playback, and a seamless user experience.",
-    tags: ["React", "Next.js", "Sass", "REST API"],
-    github: "https://github.com/Lasha-Khvichia/BeatFlow-FrontEnd",
-    live: null,
+    images: [
+      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.53.45.png",
+      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.53.56.png",
+      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.54.10.png",
+    ],
   },
   {
     category: "GAMING PLATFORM",
@@ -224,6 +220,22 @@ export const projects: Project[] = [
     github: "https://github.com/TamarCoder/fashion-ecommerce-mobile",
     live: null,
     images: ["/projects/fashion-ecommerce-1.png", "/projects/fashion-ecommerce-2.png"],
+  },
+  {
+    category: "AUTH REGISTRATION.LOGIN",
+    title: "Lumen-auth mobile aplication",
+    description:
+      "Beautiful authentication screens built with Expo Router, React Native, and NativeWind v4. Includes onboarding, login, sign-up, forgot password, and quick sign-in with full dark mode support.",
+    tags: ["React Native", "Expo", "TypeScript"],
+    github: "https://github.com/TamarCoder/lumen-auth",
+    live: null,
+    images: [
+      "/projects/Auth/Screenshot 2026-04-22 at 12.59.16 PM.png",
+      "/projects/Auth/Screenshot 2026-04-22 at 12.59.22 PM.png",
+      "/projects/Auth/Screenshot 2026-04-22 at 12.59.29 PM.png",
+      "/projects/Auth/Screenshot 2026-04-22 at 12.59.38 PM.png",
+      "/projects/Auth/Screenshot 2026-04-22 at 12.59.45 PM.png",
+    ],
   },
 ];
 
