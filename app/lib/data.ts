@@ -241,7 +241,7 @@ export const projects: Project[] = [
     category: "Movie App",
     title: "Movie App",
     description:
-      " ",
+      " Cross-platform Movie streaming application with web and mobile clients, desing ar modern , clasic , dark mode, responsive design, and more.",
     tags: ["React Native", "Expo", "TypeScript", 'React Tailwind', 'React Typescript'],
     github: "https://github.com/TamarCoder/StreamX--Movie ",
     live: "https://stream-x-movie-three.vercel.app/",
