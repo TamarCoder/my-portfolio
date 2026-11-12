@@ -9,18 +9,3 @@ export const navLinks: { id: NavId; href: string }[] = [
   { id: "contact", href: "#contact" },
 ];
 
-export const marqueeItems = [
-  "React.js",
-  "React Native",
-  "Node.js",
-  "TypeScript",
-  "JavaScript",
-  "Tailwind CSS",
-  "Zustand",
-  "Expo",
-  "HTML / CSS",
-  "Git",
-  "REST APIs",
-  "Responsive Design",
-] as const;
-

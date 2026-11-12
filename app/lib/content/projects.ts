@@ -1,6 +1,6 @@
 import type { ProjectId } from "@/app/i18n/types";
 
-export type ProjectDevice = "phone" | "browser" | "showcase";
+type ProjectDevice = "phone" | "browser" | "showcase";
 
 // Translated text lives in app/i18n/dictionaries, keyed by id.
 export interface Project {
