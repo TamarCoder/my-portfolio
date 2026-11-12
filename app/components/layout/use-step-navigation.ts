@@ -20,6 +20,7 @@ export function useStepNavigation(order: string[], active: string) {
 
   useEffect(() => {
     let lastWheel = 0;
+    let gestureUsed = false;
     let touchStartY = 0;
 
     const goBy = (step: number) => {
@@ -39,9 +40,11 @@ export function useStepNavigation(order: string[], active: string) {
     const onWheel = (e: WheelEvent) => {
       if (isInsideDialog(e)) return;
       const now = Date.now();
-      const isNewGesture = now - lastWheel > WHEEL_GAP_MS;
+      if (now - lastWheel > WHEEL_GAP_MS) gestureUsed = false;
       lastWheel = now;
-      if (isNewGesture && Math.abs(e.deltaY) > WHEEL_THRESHOLD) goBy(e.deltaY > 0 ? 1 : -1);
+      if (gestureUsed || Math.abs(e.deltaY) <= WHEEL_THRESHOLD) return;
+      gestureUsed = true;
+      goBy(e.deltaY > 0 ? 1 : -1);
     };
     const onKey = (e: KeyboardEvent) => {
       if (document.querySelector("[data-no-step]")) return;
