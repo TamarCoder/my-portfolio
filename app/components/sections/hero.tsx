@@ -1,40 +1,43 @@
+"use client";
+
 import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import Button from "@/app/components/ui/button";
 import HeroPortrait from "@/app/components/sections/hero-portrait";
-import { stats } from "@/app/lib/content/navigation";
+import { useLanguage } from "@/app/i18n/language-provider";
 import { contactInfo } from "@/app/lib/content/contact";
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const h = t.hero;
   return (
     <section id="home" className="relative flex min-h-full items-center overflow-hidden px-6 py-12 lg:px-12">
       <div className="mx-auto grid w-full max-w-[2200px] items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <div className="glass mb-8 inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4">
-            <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-medium text-emerald-300">Available for work</span>
-            <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Tbilisi, Georgia</span>
+            <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-medium text-emerald-300">{h.available}</span>
+            <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">{h.location}</span>
           </div>
 
           <p className="mb-4 text-[clamp(1.1rem,2vw,1.6rem)] text-muted-foreground">
-            Hi, I&apos;m <span className="font-semibold text-foreground">Tamar Khuskivadze</span> —
+            {h.greeting} <span className="font-semibold text-foreground">Tamar Khuskivadze</span> —
           </p>
-          <h1 className="mb-8 text-[clamp(2.75rem,min(6vw,9vh),6.5rem)] font-bold leading-[1.02] tracking-tight">
-            I build{" "}
-            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">web</span>
-            {" & "}
-            <span className="bg-linear-to-r from-cyan-400 to-emerald-300 bg-clip-text text-transparent">mobile</span>
-            <br />
-            apps people enjoy using.
+          <h1 className="mb-8 text-[clamp(2.25rem,min(5.4vw,8.5vh),6rem)] text-balance font-bold leading-[1.02] tracking-tight">
+            {h.titleStart}{" "}
+            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">{h.web}</span>
+            {` ${h.and} `}
+            <span className="bg-linear-to-r from-cyan-400 to-emerald-300 bg-clip-text text-transparent">{h.mobile}</span>{" "}
+            {h.titleEnd}
           </h1>
           <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Frontend &amp; mobile developer working with React, React Native and Angular — clean code, sharp UI, real results.
+            {h.intro}
           </p>
 
           <div className="mb-12 flex flex-wrap items-center gap-3">
             <Button href="#projects" glow className="inline-flex items-center gap-2">
-              See my work <ArrowUpRight size={16} />
+              {h.seeWork} <ArrowUpRight size={16} />
             </Button>
-            <Button href="#contact" variant="secondary">Get in touch</Button>
+            <Button href="#contact" variant="secondary">{h.getInTouch}</Button>
             <Button href={contactInfo.linkedin.url} variant="icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <LinkedInIcon size={18} />
             </Button>
@@ -44,7 +47,7 @@ export default function Hero() {
           </div>
 
           <dl className="flex flex-wrap gap-x-12 gap-y-4 border-t border-white/10 pt-8">
-            {stats.map((stat) => (
+            {h.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="text-4xl font-bold">{stat.value}</dd>

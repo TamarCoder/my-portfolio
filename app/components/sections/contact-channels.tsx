@@ -1,8 +1,11 @@
+"use client";
+
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import IconBox from "@/app/components/ui/icon-box";
 import { contactInfo } from "@/app/lib/content/contact";
+import { useLanguage } from "@/app/i18n/language-provider";
 
 interface Channel {
   icon: ReactNode;
@@ -10,12 +13,6 @@ interface Channel {
   value: string;
   href?: string;
 }
-
-const channels: Channel[] = [
-  { icon: <Mail size={20} />, label: "Email", value: contactInfo.email, href: `mailto:${contactInfo.email}` },
-  { icon: <LinkedInIcon size={20} />, label: "LinkedIn", value: contactInfo.linkedin.label, href: contactInfo.linkedin.url },
-  { icon: <MapPin size={20} />, label: "Based in", value: contactInfo.location },
-];
 
 function ChannelCard({ channel }: { channel: Channel }) {
   const body = (
@@ -41,6 +38,12 @@ function ChannelCard({ channel }: { channel: Channel }) {
 }
 
 export default function ContactChannels() {
+  const { t } = useLanguage();
+  const channels: Channel[] = [
+    { icon: <Mail size={20} />, label: t.contact.email, value: contactInfo.email, href: `mailto:${contactInfo.email}` },
+    { icon: <LinkedInIcon size={20} />, label: t.contact.linkedin, value: contactInfo.linkedin.label, href: contactInfo.linkedin.url },
+    { icon: <MapPin size={20} />, label: t.contact.basedIn, value: t.contact.location },
+  ];
   return (
     <div className="flex flex-col gap-3">
       {channels.map((channel) => (

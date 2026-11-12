@@ -1,19 +1,13 @@
-export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-] as const;
+import type { NavId } from "@/app/i18n/types";
 
-
-export const stats = [
-  { value: "2+", label: "Years in\nDevelopment" },
-  { value: "3", label: "Companies\nWorked At" },
-  { value: "30%", label: "Admin Time\nReduced" },
-] as const;
-
+export const navLinks: { id: NavId; href: string }[] = [
+  { id: "home", href: "#home" },
+  { id: "about", href: "#about" },
+  { id: "services", href: "#services" },
+  { id: "skills", href: "#skills" },
+  { id: "projects", href: "#projects" },
+  { id: "contact", href: "#contact" },
+];
 
 export const marqueeItems = [
   "React.js",

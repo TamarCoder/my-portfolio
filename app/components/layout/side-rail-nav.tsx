@@ -6,10 +6,13 @@ import { useTheme } from "@/app/providers/theme-provider";
 import { useActiveSection } from "@/app/providers/active-section-provider";
 import { navLinks } from "@/app/lib/content/navigation";
 import { navIcons } from "@/app/components/layout/nav-icons";
+import LanguageSwitcher from "@/app/components/layout/language-switcher";
+import { useLanguage } from "@/app/i18n/language-provider";
 
 export default function SideRailNav() {
   const { theme, toggleTheme } = useTheme();
   const active = useActiveSection();
+  const { t } = useLanguage();
 
   return (
     <aside className="fixed inset-y-0 left-0 z-50 hidden p-4 md:flex">
@@ -33,7 +36,7 @@ export default function SideRailNav() {
               <li key={link.href} className="group relative">
                 <a
                   href={link.href}
-                  aria-label={link.label}
+                  aria-label={t.nav[link.id]}
                   aria-current={isActive ? "page" : undefined}
                   className={`flex h-11 w-11 items-center justify-center rounded-2xl transition-all ${
                     isActive
@@ -44,20 +47,23 @@ export default function SideRailNav() {
                   <Icon size={19} />
                 </a>
                 <span className="glass pointer-events-none absolute left-full top-1/2 ml-4 -translate-x-2 -translate-y-1/2 whitespace-nowrap rounded-xl px-3 py-1.5 text-xs font-medium opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
-                  {link.label}
+                  {t.nav[link.id]}
                 </span>
               </li>
             );
           })}
         </ul>
 
-        <button
-          onClick={toggleTheme}
-          className="flex h-11 w-11 items-center justify-center rounded-2xl text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        <div className="flex flex-col items-center gap-1">
+          <LanguageSwitcher placement="right" />
+          <button
+            onClick={toggleTheme}
+            className="flex h-11 w-11 items-center justify-center rounded-2xl text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+            aria-label={t.common.toggleTheme}
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
       </nav>
     </aside>
   );

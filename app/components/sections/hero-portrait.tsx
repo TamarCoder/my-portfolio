@@ -16,12 +16,12 @@ const profileLines = [
 // Photo with a code card and tech chips around it: shows "developer" before any text is read.
 export default function HeroPortrait() {
   return (
-    <div className="relative mx-auto w-[clamp(15rem,30vh,24rem)]">
+    <div className="relative mx-auto w-[clamp(17rem,46vh,34rem)]">
       <div className="pointer-events-none absolute -inset-16 rounded-full bg-linear-to-br from-accent/40 to-cyan-400/30 blur-[80px]" />
 
       <div data-tilt className="relative aspect-[4/5] rounded-[2.5rem] bg-linear-to-br from-accent via-violet-500 to-cyan-400 p-[2px]">
         <div className="relative h-full w-full overflow-hidden rounded-[2.4rem]">
-          <Image src="/profile-hero.jpg" alt="Tamar Khuskivadze" fill priority sizes="400px" className="object-cover object-top" />
+          <Image src="/profile-hero.jpg" alt="Tamar Khuskivadze" fill priority sizes="(min-width: 1024px) 34rem, 80vw" className="object-cover object-top" />
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent" />
         </div>
       </div>
@@ -32,7 +32,7 @@ export default function HeroPortrait() {
         </span>
       ))}
 
-      <pre className="glass absolute -bottom-10 -right-6 rounded-2xl px-5 py-4 font-mono text-[clamp(0.65rem,1.3vh,0.8rem)] leading-relaxed shadow-2xl sm:-right-20">
+      <pre className="glass absolute -bottom-8 -right-4 rounded-2xl px-5 py-4 font-mono text-[clamp(0.7rem,1.4vh,0.9rem)] leading-relaxed shadow-2xl xl:-right-16">
         <span className="text-accent-light">const</span> tamar = {"{"}
         {profileLines.map(([key, value]) => (
           <span key={key} className="block pl-4">

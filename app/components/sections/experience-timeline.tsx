@@ -1,14 +1,17 @@
-import { experiences } from "@/app/lib/content/experience";
+"use client";
+
+import { useLanguage } from "@/app/i18n/language-provider";
 
 export default function ExperienceTimeline() {
+  const { t } = useLanguage();
   return (
     <div className="glass flex h-full flex-col rounded-3xl p-6 lg:p-7">
       <p className="mb-5 font-mono text-xs tracking-[0.25em] text-accent-light uppercase">
-        Experience
+        {t.about.experienceLabel}
       </p>
       <ol className="relative flex flex-1 flex-col justify-between gap-5 pl-7">
         <span className="absolute bottom-2 left-[7px] top-2 w-px bg-linear-to-b from-accent via-cyan-400 to-transparent" />
-        {experiences.map((exp, i) => (
+        {t.experiences.map((exp, i) => (
           <li key={exp.company} data-tilt className="group relative rounded-2xl p-3 -m-3">
             <span
               className={`absolute -left-7 top-4 h-3.5 w-3.5 rounded-full ring-4 ring-background ${

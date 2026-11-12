@@ -6,11 +6,14 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/app/providers/theme-provider";
 import { useActiveSection } from "@/app/providers/active-section-provider";
 import { navLinks } from "@/app/lib/content/navigation";
+import LanguageSwitcher from "@/app/components/layout/language-switcher";
+import { useLanguage } from "@/app/i18n/language-provider";
 
 export default function MobileTopBar() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const active = useActiveSection();
+  const { t } = useLanguage();
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:hidden">
@@ -22,10 +25,11 @@ export default function MobileTopBar() {
           </span>
         </a>
         <div className="flex items-center gap-1">
-          <button onClick={toggleTheme} className="rounded-full p-2 text-muted-foreground" aria-label="Toggle theme">
+          <LanguageSwitcher placement="bottom" />
+          <button onClick={toggleTheme} className="rounded-full p-2 text-muted-foreground" aria-label={t.common.toggleTheme}>
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <button onClick={() => setIsOpen(!isOpen)} className="rounded-full p-2 text-muted-foreground" aria-label="Toggle menu">
+          <button onClick={() => setIsOpen(!isOpen)} className="rounded-full p-2 text-muted-foreground" aria-label={t.common.toggleMenu}>
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -44,7 +48,7 @@ export default function MobileTopBar() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {link.label}
+                {t.nav[link.id]}
               </a>
             </li>
           ))}

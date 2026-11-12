@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import PhoneMockup from "@/app/components/ui/devices/phone-mockup";
 import BrowserMockup from "@/app/components/ui/devices/browser-mockup";
+import BrowserCollage from "@/app/components/sections/browser-collage";
 import type { Project } from "@/app/lib/content/projects";
+import { useLanguage } from "@/app/i18n/language-provider";
 
 function ScreensComingSoon() {
+  const { t } = useLanguage();
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-linear-to-br from-accent/40 via-zinc-950 to-cyan-500/30 p-4 text-center">
       <Image src="/logo.png" alt="" width={56} height={56} className="rounded-full" />
-      <span className="font-mono text-[10px] tracking-[0.2em] text-white/60 uppercase">Screens soon</span>
+      <span className="font-mono text-[10px] tracking-[0.2em] text-white/60 uppercase">{t.projects.screensSoon}</span>
     </div>
   );
 }
@@ -42,6 +47,10 @@ export default function ProjectDevices({ project }: { project: Project }) {
 
   if (project.device === "browser") {
     const host = project.live ? new URL(project.live).host : `${project.title.toLowerCase().replace(/\s+/g, "")}.app`;
+    const [main, ...extras] = project.screens;
+    if (main && extras.length > 0) {
+      return <BrowserCollage title={project.title} host={host} main={main} extras={extras} />;
+    }
     return (
       <div className="flex h-full items-center justify-center [perspective:1800px]">
         <BrowserMockup src={project.screens[0]} alt={`${project.title} preview`} url={host} className="animate-float w-full max-w-3xl [transform:rotateX(8deg)_rotateY(-10deg)]">

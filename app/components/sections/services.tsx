@@ -3,25 +3,30 @@
 import { useState } from "react";
 import ServiceShowcase from "@/app/components/sections/service-showcase";
 import { services } from "@/app/lib/content/services";
+import { useLanguage } from "@/app/i18n/language-provider";
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
+  const s = t.services;
 
   return (
     <section id="services" className="px-6 py-10 lg:px-12">
       <div className="mx-auto grid max-w-[2200px] items-stretch gap-8 lg:h-[calc(100dvh-5rem)] lg:grid-cols-12">
         {/* Left — heading + interactive list */}
         <div className="flex flex-col justify-center lg:col-span-6">
-          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-accent-light uppercase">03 / Services</p>
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-accent-light uppercase">{s.label}</p>
           <h2 className="mb-8 text-4xl font-bold leading-tight xl:text-5xl">
-            What I can <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">build</span> for you
+            {s.titleStart}{" "}
+            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">{s.titleAccent}</span>{" "}
+            {s.titleEnd}
           </h2>
 
           <ul className="border-t border-white/10">
             {services.map((service, i) => {
               const isActive = i === activeIndex;
               return (
-                <li key={service.title} className="border-b border-white/10">
+                <li key={service.id} className="border-b border-white/10">
                   <button
                     onMouseEnter={() => setActiveIndex(i)}
                     onFocus={() => setActiveIndex(i)}
@@ -37,7 +42,7 @@ export default function Services() {
                         isActive ? "translate-x-2 text-foreground" : "text-muted-foreground group-hover:text-foreground"
                       }`}
                     >
-                      {service.title}
+                      {s.items[service.id].title}
                     </span>
                     <span
                       className={`h-1 rounded-full bg-linear-to-r from-accent to-cyan-400 transition-all duration-500 ${
