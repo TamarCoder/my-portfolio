@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { ArrowDown } from "lucide-react";
 import { useActiveSection } from "@/app/providers/active-section-provider";
 import FitToViewport from "@/app/components/layout/fit-to-viewport";
 import { useStepNavigation } from "@/app/components/layout/use-step-navigation";
 import { useLanguage } from "@/app/i18n/language-provider";
 import type { NavId } from "@/app/i18n/types";
+
+const noSubscribe = () => () => {};
 
 interface SectionStageProps {
   sections: Record<string, ReactNode>;
@@ -22,7 +24,16 @@ export default function SectionStage({ sections }: SectionStageProps) {
   const [previousIndex, setPreviousIndex] = useState(index);
   const [isForward, setIsForward] = useState(true);
   const [leaving, setLeaving] = useState<string | null>(null);
-  if (previousIndex !== index) {
+  // Every fresh visit starts on Home: drop any old hash before the first section is shown.
+  const isBrowser = useSyncExternalStore(noSubscribe, () => true, () => false);
+  const [hasShown, setHasShown] = useState(false);
+  if (isBrowser && !hasShown) {
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    setHasShown(true);
+    setPreviousIndex(0);
+  } else if (hasShown && previousIndex !== index) {
     setIsForward(index > previousIndex);
     setLeaving(order[previousIndex] ?? null);
     setPreviousIndex(index);
@@ -37,6 +48,8 @@ export default function SectionStage({ sections }: SectionStageProps) {
   const next = order[index + 1];
 
   useStepNavigation(order, active);
+
+  if (!isBrowser) return <main className="fixed inset-0 md:left-24" />;
 
   return (
     <main className="fixed inset-0 md:left-24">
