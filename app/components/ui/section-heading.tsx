@@ -5,7 +5,7 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({ label, title }: SectionHeadingProps) {
   return (
-    <div className="mb-14 text-center">
+    <div className="mb-8 text-center">
       <p className="mb-2 font-mono text-sm tracking-widest text-accent uppercase">
         {label}
       </p>

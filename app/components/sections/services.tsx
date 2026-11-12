@@ -6,7 +6,7 @@ import { services } from "@/app/lib/data";
 
 export default function Services() {
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-10">
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <SectionHeading label="Services" title="What I Can Do For You" />
 

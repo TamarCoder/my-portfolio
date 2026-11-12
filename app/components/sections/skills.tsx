@@ -59,7 +59,7 @@ export default function Skills() {
   const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="py-10">
       <div ref={ref} className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <SectionHeading label="Skills & Journey" title="My Skills & Experience" />
 

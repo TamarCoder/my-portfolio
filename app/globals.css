@@ -191,19 +191,17 @@ body {
   height: 100%;
 }
 
-/* No fill-mode on purpose: a lasting transform would break position:fixed modals inside the panel. */
-@keyframes panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-    filter: blur(8px);
-  }
+/* No fill-mode on purpose: a lasting transform would break position:fixed elements inside the panel. */
+@keyframes panel-up {
+  from { opacity: 0; transform: translateY(60px) scale(0.97); filter: blur(10px); }
+}
+@keyframes panel-down {
+  from { opacity: 0; transform: translateY(-60px) scale(0.97); filter: blur(10px); }
 }
 
-.animate-panel-in {
-  animation: panel-in 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
+.animate-panel-up { animation: panel-up 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.animate-panel-down { animation: panel-down 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-panel-in { animation: none; }
+  .animate-panel-up, .animate-panel-down { animation: none; }
 }

@@ -13,12 +13,12 @@ const metrics = [
 
 export default function Experience() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="py-10">
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <SectionHeading label="About Me" title="Who I Am" />
 
         {/* Bento grid: photo + bio + metrics */}
-        <div className="mb-24 grid gap-4 md:grid-cols-4">
+        <div className="mb-12 grid gap-4 md:grid-cols-4">
           {/* Photo card */}
           <div className="relative overflow-hidden rounded-2xl border border-border md:row-span-2">
             <Image

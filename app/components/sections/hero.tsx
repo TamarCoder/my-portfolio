@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import Button from "@/app/components/ui/button";
 import { stats, contactInfo } from "@/app/lib/data";
@@ -97,13 +97,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <a
-        href="#about"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce text-muted-foreground transition-colors hover:text-accent md:block"
-        aria-label="Scroll down"
-      >
-        <ArrowDown size={20} />
-      </a>
     </section>
   );
 }

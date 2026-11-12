@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ExternalLink, Code2, X } from "lucide-react";
 import Image from "next/image";
 import SectionHeading from "@/app/components/ui/section-heading";
@@ -56,7 +57,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-24">
+      <section id="projects" className="py-10">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
           <SectionHeading label="Portfolio" title="Featured Projects" />
 
@@ -172,8 +173,9 @@ export default function Projects() {
       </section>
 
       {/* MODAL */}
-      {selectedProject && (
+      {selectedProject && createPortal((
         <div
+          data-no-step
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           onClick={() => setSelectedProject(null)}
         >
@@ -284,7 +286,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-      )}
+      ), document.body)}
     </>
   );
 }
