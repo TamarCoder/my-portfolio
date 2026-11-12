@@ -6,7 +6,7 @@ import { navLinks, contactInfo } from "@/app/lib/data";
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-12">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <a href="#home" className="text-xl font-bold tracking-tight">
             <span className="text-accent">T</span>amar

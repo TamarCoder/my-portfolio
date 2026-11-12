@@ -14,7 +14,7 @@ const metrics = [
 export default function Experience() {
   return (
     <section id="about" className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <SectionHeading label="About Me" title="Who I Am" />
 
         {/* Bento grid: photo + bio + metrics */}

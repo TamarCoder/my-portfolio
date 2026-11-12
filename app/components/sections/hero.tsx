@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import Button from "@/app/components/ui/button";
 import { stats, contactInfo } from "@/app/lib/data";
@@ -8,109 +8,102 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-16 pt-28 md:pt-16 lg:px-12"
     >
-      {/* Background */}
-
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
-        {/* Left — text */}
-        <div className="order-2 lg:order-1">
-          <div className="mb-6 inline-flex items-center gap-2 glass rounded-full px-4 py-1.5">
+      <div className="mx-auto w-full max-w-[1600px]">
+        {/* Top row — status + location */}
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
               <span className="relative h-2 w-2 rounded-full bg-green-500" />
             </span>
-            <span className="text-sm text-muted-foreground">
-              Available for work
-            </span>
+            <span className="text-sm text-muted-foreground">Available for work</span>
+          </div>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Tbilisi, Georgia — 01 / Home
+          </span>
+        </div>
+
+        {/* Giant name, full width */}
+        <h1 className="font-bold leading-[0.9] tracking-tighter">
+          <span className="block text-[clamp(1.25rem,2.4vw,2.25rem)] font-medium tracking-tight text-muted-foreground">
+            Hi, I&apos;m
+          </span>
+          <span className="block bg-linear-to-r from-foreground via-accent-light to-cyan-400 bg-clip-text text-[clamp(4rem,15vw,15rem)] text-transparent">
+            TAMAR
+          </span>
+        </h1>
+
+        {/* Divider line */}
+        <div className="my-8 h-px w-full bg-linear-to-r from-accent via-cyan-400/60 to-transparent" />
+
+        {/* Bottom grid — role, text, actions | stats | photo */}
+        <div className="grid items-end gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="mb-4 text-2xl font-semibold sm:text-3xl">
+              Frontend &amp; Mobile <span className="text-muted-foreground">Developer</span>
+            </p>
+            <p className="mb-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
+              Crafting high-performance web and mobile applications with React,
+              React Native, and modern tools — clean code, sharp UI/UX, real
+              results.
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button href="#contact" glow className="inline-flex items-center gap-2">
+                Get in Touch <ArrowUpRight size={16} />
+              </Button>
+              <Button href="#about" variant="secondary">
+                About Me
+              </Button>
+              <Button
+                href={contactInfo.linkedin.url}
+                variant="icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon size={18} />
+              </Button>
+              <Button href={`mailto:${contactInfo.email}`} variant="icon" aria-label="Email">
+                <Mail size={18} />
+              </Button>
+            </div>
           </div>
 
-          <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl xl:text-6xl">
-            Hi, I&apos;m{" "}
-            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">Tamar</span>
-            <br />
-            <span className="text-muted-foreground">Frontend &amp; Mobile</span>
-            <br />
-            Developer
-          </h1>
-
-          <p className="mb-8 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Crafting high-performance web and mobile applications with React,
-            React Native, and modern tools — clean code, sharp UI/UX, real
-            results.
-          </p>
-
-          {/* CTA + socials */}
-          <div className="mb-12 flex flex-wrap items-center gap-3">
-            <Button href="#contact" glow>
-              Get in Touch
-            </Button>
-            <Button href="#about" variant="secondary">
-              About Me
-            </Button>
-            <div className="mx-1 hidden h-8 w-px bg-border sm:block" />
-            <Button
-              href={contactInfo.linkedin.url}
-              variant="icon"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon size={18} />
-            </Button>
-            <Button
-              href={`mailto:${contactInfo.email}`}
-              variant="icon"
-              aria-label="Email"
-            >
-              <Mail size={18} />
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-3 gap-3 lg:col-span-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="glass rounded-2xl px-5 py-3">
-                <p className="text-3xl font-bold text-accent">{stat.value}</p>
-                <p className="whitespace-pre-line text-xs text-muted-foreground">
-                  {stat.label}
-                </p>
+              <div key={stat.label} className="glass rounded-2xl p-4">
+                <p className="text-3xl font-bold text-accent-light">{stat.value}</p>
+                <p className="mt-1 whitespace-pre-line text-xs text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Right — photo */}
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-          <div className="relative">
-            <div className="glass absolute -inset-4 rounded-[2rem] sm:-inset-6" />
-            <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-accent/15 blur-2xl" />
-            <div className="relative h-80 w-64 overflow-hidden rounded-3xl border-2 border-border sm:h-105 sm:w-80">
-              <Image
-                src="/profile-hero.jpg"
-                alt="Tamar Khuskivadze"
-                fill
-                className="object-cover object-top"
-                priority
-              />
+          <div className="flex justify-center lg:col-span-3 lg:justify-end">
+            <div className="relative">
+              <div className="glass absolute -inset-3 rotate-3 rounded-[2rem]" />
+              <div className="relative h-72 w-56 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-64">
+                <Image
+                  src="/profile-hero.jpg"
+                  alt="Tamar Khuskivadze"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
             </div>
-            <div className="absolute -right-3 top-8 h-3 w-3 rounded-full bg-accent" />
-            <div className="absolute -left-2 bottom-16 h-2 w-2 rounded-full bg-accent-light" />
-            <div className="absolute -bottom-2 right-12 h-4 w-4 rounded-full border-2 border-accent" />
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <a
-          href="#about"
-          className="animate-bounce text-muted-foreground transition-colors hover:text-accent"
-          aria-label="Scroll down"
-        >
-          <ArrowDown size={20} />
-        </a>
-      </div>
+      <a
+        href="#about"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce text-muted-foreground transition-colors hover:text-accent md:block"
+        aria-label="Scroll down"
+      >
+        <ArrowDown size={20} />
+      </a>
     </section>
   );
 }

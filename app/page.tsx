@@ -14,6 +14,7 @@ export default function Home() {
     <>
       <AuroraBackground />
       <Header />
+      <div className="md:pl-24">
       <main>
         <Hero />
         <Marquee />
@@ -24,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      </div>
     </>
   );
 }

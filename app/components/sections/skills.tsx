@@ -60,7 +60,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-24">
-      <div ref={ref} className="mx-auto max-w-6xl px-6">
+      <div ref={ref} className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <SectionHeading label="Skills & Journey" title="My Skills & Experience" />
 
         <div className="grid gap-12 lg:grid-cols-5">

@@ -57,7 +57,7 @@ export default function Projects() {
   return (
     <>
       <section id="projects" className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
           <SectionHeading label="Portfolio" title="Featured Projects" />
 
           <div className="grid gap-6 md:grid-cols-2">
