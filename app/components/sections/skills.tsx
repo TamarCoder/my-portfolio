@@ -71,7 +71,8 @@ export default function Skills() {
               {skills.map((skill, i) => (
                 <div
                   key={skill.name}
-                  className={`glass group flex items-center gap-4 rounded-2xl p-3 pr-5 transition-all duration-700 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent-glow ${
+                  data-tilt
+                  className={`glass group flex items-center gap-4 rounded-2xl p-3 pr-5 hover:border-accent/40 ${
                     inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                   }`}
                   style={{ transitionDelay: inView ? `${i * 70}ms` : "0ms" }}
@@ -106,7 +107,7 @@ export default function Skills() {
                   <span className="absolute -left-8 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-background ring-2 ring-accent shadow-[0_0_14px_var(--accent-glow)]">
                     <span className="h-2 w-2 rounded-full bg-linear-to-br from-accent-light to-cyan-400" />
                   </span>
-                  <div className="glass rounded-2xl p-4 transition-all hover:border-accent/40">
+                  <div data-tilt className="glass rounded-2xl p-4 hover:border-accent/40">
                     <span className="inline-block rounded-full bg-accent/15 px-2.5 py-0.5 font-mono text-xs text-accent-light">
                       {item.year}
                     </span>

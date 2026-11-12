@@ -111,7 +111,7 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+
 }
 
 @keyframes marquee {
@@ -145,4 +145,65 @@ html {
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ---------- Interaction ---------- */
+a[href],
+button:not(:disabled),
+[role="button"],
+select,
+label[for],
+summary {
+  cursor: pointer;
+}
+
+[data-tilt] {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease-out, translate 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.7s;
+  will-change: transform;
+}
+
+/* Light glare that follows the pointer */
+[data-tilt]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.14),
+    transparent 55%
+  );
+  opacity: var(--glare-opacity, 0);
+  transition: opacity 0.3s;
+}
+
+[data-tilt]:hover {
+  box-shadow: 0 20px 50px -12px var(--accent-glow), inset 0 1px 0 var(--glass-highlight);
+}
+
+/* ---------- Section panels ---------- */
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* No fill-mode on purpose: a lasting transform would break position:fixed modals inside the panel. */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(8px);
+  }
+}
+
+.animate-panel-in {
+  animation: panel-in 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-panel-in { animation: none; }
 }

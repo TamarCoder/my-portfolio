@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-16 pt-28 md:pt-16 lg:px-12"
+      className="relative flex min-h-full flex-col justify-center overflow-hidden px-6 py-12 lg:px-12"
     >
       <div className="mx-auto w-full max-w-[1600px]">
         {/* Top row — status + location */}
@@ -73,7 +73,7 @@ export default function Hero() {
 
           <div className="grid grid-cols-3 gap-3 lg:col-span-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="glass rounded-2xl p-4">
+              <div key={stat.label} data-tilt className="glass rounded-2xl p-4">
                 <p className="text-3xl font-bold text-accent-light">{stat.value}</p>
                 <p className="mt-1 whitespace-pre-line text-xs text-muted-foreground">{stat.label}</p>
               </div>
@@ -81,7 +81,7 @@ export default function Hero() {
           </div>
 
           <div className="flex justify-center lg:col-span-3 lg:justify-end">
-            <div className="relative">
+            <div data-tilt className="rounded-3xl">
               <div className="glass absolute -inset-3 rotate-3 rounded-[2rem]" />
               <div className="relative h-72 w-56 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-64">
                 <Image

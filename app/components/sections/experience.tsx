@@ -69,9 +69,9 @@ export default function Experience() {
 
           {/* Metric cards */}
           {metrics.map((metric) => (
-            <Card key={metric.label} className="flex items-center gap-4 p-5">
+            <Card key={metric.label} hover className="flex items-center gap-4 p-5">
               <IconBox>
-                <metric.icon size={18} className="text-accent" />
+                <metric.icon size={18} />
               </IconBox>
               <div>
                 <p className="text-xl font-bold text-accent">{metric.value}</p>
@@ -92,7 +92,7 @@ export default function Experience() {
                   <IconBox className="mt-0.5">
                     <Briefcase
                       size={18}
-                      className="text-muted-foreground transition-colors group-hover:text-accent"
+                      className="transition-transform group-hover:scale-110"
                     />
                   </IconBox>
                   <div>

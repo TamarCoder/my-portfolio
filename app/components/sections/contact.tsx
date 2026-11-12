@@ -55,7 +55,7 @@ export default function Contact() {
                   className="flex items-center gap-3 text-sm transition-colors hover:text-accent"
                 >
                   <IconBox size="sm">
-                    <Mail size={15} className="text-accent" />
+                    <Mail size={15} />
                   </IconBox>
                   <span className="break-all">{contactInfo.email}</span>
                 </a>
@@ -67,14 +67,14 @@ export default function Contact() {
                   className="flex items-center gap-3 text-sm transition-colors hover:text-accent"
                 >
                   <IconBox size="sm">
-                    <LinkedInIcon size={15} className="text-accent" />
+                    <LinkedInIcon size={15} />
                   </IconBox>
                   {contactInfo.linkedin.label}
                 </a>
 
                 <div className="flex items-center gap-3 text-sm">
                   <IconBox size="sm">
-                    <MapPin size={15} className="text-accent" />
+                    <MapPin size={15} />
                   </IconBox>
                   {contactInfo.location}
                 </div>
