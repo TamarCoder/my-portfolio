@@ -26,6 +26,23 @@ export default function ServiceShowcase({ service, index, total }: ServiceShowca
         </div>
         <h3 className="mb-5 text-4xl font-bold leading-tight xl:text-5xl">{service.title}</h3>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{service.description}</p>
+
+        <p className="mb-3 mt-10 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Built with</p>
+        <ul className="flex flex-wrap gap-2">
+          {service.stack.map((tool) => (
+            <li key={tool} className="glass rounded-full px-4 py-1.5 text-sm">{tool}</li>
+          ))}
+        </ul>
+
+        <p className="mb-3 mt-8 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Where I did it</p>
+        <ul className="grid gap-3 xl:grid-cols-2">
+          {service.proof.map((item) => (
+            <li key={item.place} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <span className="block font-semibold">{item.place}</span>
+              <span className="text-sm leading-snug text-muted-foreground">{item.result}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <a

@@ -1,103 +1,63 @@
-import Image from "next/image";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import Button from "@/app/components/ui/button";
+import HeroPortrait from "@/app/components/sections/hero-portrait";
 import { stats } from "@/app/lib/content/navigation";
 import { contactInfo } from "@/app/lib/content/contact";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative flex min-h-full flex-col justify-center overflow-hidden px-6 py-12 lg:px-12"
-    >
-      <div className="mx-auto w-full max-w-[2200px]">
-        {/* Top row — status + location */}
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-              <span className="relative h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            <span className="text-sm text-muted-foreground">Available for work</span>
-          </div>
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            Tbilisi, Georgia — 01 / Home
-          </span>
-        </div>
-
-        {/* Giant name, full width */}
-        <h1 className="font-bold leading-[0.9] tracking-tighter">
-          <span className="block text-[clamp(1.25rem,2.4vw,2.25rem)] font-medium tracking-tight text-muted-foreground">
-            Hi, I&apos;m
-          </span>
-          <span className="block bg-linear-to-r from-foreground via-accent-light to-cyan-400 bg-clip-text text-[clamp(4rem,min(15vw,24vh),18rem)] text-transparent">
-            TAMAR
-          </span>
-        </h1>
-
-        {/* Divider line */}
-        <div className="my-[3vh] h-px w-full bg-linear-to-r from-accent via-cyan-400/60 to-transparent" />
-
-        {/* Bottom grid — role, text, actions | stats | photo */}
-        <div className="grid items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="mb-4 text-2xl font-semibold sm:text-3xl">
-              Frontend &amp; Mobile <span className="text-muted-foreground">Developer</span>
-            </p>
-            <p className="mb-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
-              Crafting high-performance web and mobile applications with React,
-              React Native, and modern tools — clean code, sharp UI/UX, real
-              results.
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button href="#contact" glow className="inline-flex items-center gap-2">
-                Get in Touch <ArrowUpRight size={16} />
-              </Button>
-              <Button href="#about" variant="secondary">
-                About Me
-              </Button>
-              <Button
-                href={contactInfo.linkedin.url}
-                variant="icon"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon size={18} />
-              </Button>
-              <Button href={`mailto:${contactInfo.email}`} variant="icon" aria-label="Email">
-                <Mail size={18} />
-              </Button>
-            </div>
+    <section id="home" className="relative flex min-h-full items-center overflow-hidden px-6 py-12 lg:px-12">
+      <div className="mx-auto grid w-full max-w-[2200px] items-center gap-16 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <div className="glass mb-8 inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4">
+            <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-medium text-emerald-300">Available for work</span>
+            <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Tbilisi, Georgia</span>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 lg:col-span-4">
+          <p className="mb-4 text-[clamp(1.1rem,2vw,1.6rem)] text-muted-foreground">
+            Hi, I&apos;m <span className="font-semibold text-foreground">Tamar Khuskivadze</span> —
+          </p>
+          <h1 className="mb-8 text-[clamp(2.75rem,min(6vw,9vh),6.5rem)] font-bold leading-[1.02] tracking-tight">
+            I build{" "}
+            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">web</span>
+            {" & "}
+            <span className="bg-linear-to-r from-cyan-400 to-emerald-300 bg-clip-text text-transparent">mobile</span>
+            <br />
+            apps people enjoy using.
+          </h1>
+          <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            Frontend &amp; mobile developer working with React, React Native and Angular — clean code, sharp UI, real results.
+          </p>
+
+          <div className="mb-12 flex flex-wrap items-center gap-3">
+            <Button href="#projects" glow className="inline-flex items-center gap-2">
+              See my work <ArrowUpRight size={16} />
+            </Button>
+            <Button href="#contact" variant="secondary">Get in touch</Button>
+            <Button href={contactInfo.linkedin.url} variant="icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <LinkedInIcon size={18} />
+            </Button>
+            <Button href={`mailto:${contactInfo.email}`} variant="icon" aria-label="Email">
+              <Mail size={18} />
+            </Button>
+          </div>
+
+          <dl className="flex flex-wrap gap-x-12 gap-y-4 border-t border-white/10 pt-8">
             {stats.map((stat) => (
-              <div key={stat.label} data-tilt className="glass rounded-2xl p-4">
-                <p className="text-3xl font-bold text-accent-light">{stat.value}</p>
-                <p className="mt-1 whitespace-pre-line text-xs text-muted-foreground">{stat.label}</p>
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="text-4xl font-bold">{stat.value}</dd>
+                <dd className="mt-1 whitespace-pre-line text-sm text-muted-foreground">{stat.label}</dd>
               </div>
             ))}
-          </div>
+          </dl>
+        </div>
 
-          <div className="flex justify-center lg:col-span-3 lg:justify-end">
-            <div data-tilt className="rounded-3xl">
-              <div className="glass absolute -inset-3 rotate-3 rounded-[2rem]" />
-              <div className="relative h-[clamp(14rem,34vh,26rem)] w-[clamp(11rem,26vh,20rem)] overflow-hidden rounded-3xl border border-white/10">
-                <Image
-                  src="/profile-hero.jpg"
-                  alt="Tamar Khuskivadze"
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
+        <div className="hidden justify-center lg:col-span-5 lg:flex">
+          <HeroPortrait />
         </div>
       </div>
-
     </section>
   );
 }

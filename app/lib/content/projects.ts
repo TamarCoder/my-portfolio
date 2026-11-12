@@ -62,21 +62,5 @@ export const projects: Project[] = [
     github: "https://github.com/TamarCoder/Billo",
     live: "https://billo-three.vercel.app",
   },
-  {
-    category: "Mobile application",
-    title: "Pokedex App",
-    description:
-      "A cross-platform Pokémon explorer built with React Native and Expo, powered by the PokeAPI — instant search, type-colored cards and detailed stats.",
-    highlights: ["Real-time search", "Type-based colors", "Animated cards", "Stats with progress bars"],
-    tags: ["React Native", "Expo", "TypeScript", "PokeAPI"],
-    device: "phone",
-    screens: [
-      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.53.45.png",
-      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.53.56.png",
-      "/projects/Pokedex/Simulator Screenshot - iPhone 16e - 2026-04-22 at 12.54.10.png",
-    ],
-    github: "https://github.com/TamarCoder/Mobile-Pokedex-App-",
-    live: null,
-  },
 ];
 
