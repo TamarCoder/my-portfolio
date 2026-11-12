@@ -11,16 +11,15 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20"
     >
       {/* Background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-1/3 h-100 w-100 rounded-full bg-accent/8 blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/3 h-72 w-72 rounded-full bg-accent/5 blur-[120px]" />
-      </div>
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
         {/* Left — text */}
         <div className="order-2 lg:order-1">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 backdrop-blur-sm">
-            <span className="h-2 w-2 rounded-full bg-green-500" />
+          <div className="mb-6 inline-flex items-center gap-2 glass rounded-full px-4 py-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+              <span className="relative h-2 w-2 rounded-full bg-green-500" />
+            </span>
             <span className="text-sm text-muted-foreground">
               Available for work
             </span>
@@ -28,7 +27,7 @@ export default function Hero() {
 
           <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl xl:text-6xl">
             Hi, I&apos;m{" "}
-            <span className="text-accent">Tamar</span>
+            <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">Tamar</span>
             <br />
             <span className="text-muted-foreground">Frontend &amp; Mobile</span>
             <br />
@@ -69,9 +68,9 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="flex gap-10">
+          <div className="flex flex-wrap gap-3">
             {stats.map((stat) => (
-              <div key={stat.label}>
+              <div key={stat.label} className="glass rounded-2xl px-5 py-3">
                 <p className="text-3xl font-bold text-accent">{stat.value}</p>
                 <p className="whitespace-pre-line text-xs text-muted-foreground">
                   {stat.label}
@@ -84,7 +83,7 @@ export default function Hero() {
         {/* Right — photo */}
         <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
           <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl border border-accent/20 sm:-inset-6" />
+            <div className="glass absolute -inset-4 rounded-[2rem] sm:-inset-6" />
             <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-accent/15 blur-2xl" />
             <div className="relative h-80 w-64 overflow-hidden rounded-3xl border-2 border-border sm:h-105 sm:w-80">
               <Image

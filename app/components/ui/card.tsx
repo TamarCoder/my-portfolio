@@ -9,9 +9,9 @@ interface CardProps {
 export default function Card({ children, hover = false, className = "" }: CardProps) {
   return (
     <div
-      className={`rounded-2xl border border-border bg-card ${
+      className={`glass rounded-2xl ${
         hover
-          ? "transition-all hover:border-accent/40 hover:shadow-lg hover:shadow-accent-glow"
+          ? "transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent-glow"
           : ""
       } ${className}`}
     >

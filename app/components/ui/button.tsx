@@ -4,10 +4,10 @@ type Variant = "primary" | "secondary" | "icon";
 
 const variants: Record<Variant, string> = {
   primary:
-    "rounded-full bg-accent px-7 py-3 text-sm font-medium text-white transition-all hover:bg-accent-light",
+    "rounded-full bg-linear-to-r from-accent to-cyan-500 px-7 py-3 text-sm font-medium text-white transition-all hover:brightness-110",
   secondary:
-    "rounded-full border border-border px-7 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent",
-  icon: "rounded-full border border-border p-3 text-muted-foreground transition-colors hover:border-accent hover:text-accent",
+    "glass rounded-full px-7 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent",
+  icon: "glass rounded-full p-3 text-muted-foreground transition-colors hover:border-accent hover:text-accent",
 };
 
 interface ButtonBaseProps {

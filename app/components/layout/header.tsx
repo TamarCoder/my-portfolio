@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/app/providers/theme-provider";
 import Button from "@/app/components/ui/button";
@@ -11,11 +12,20 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#home" className="text-xl font-bold tracking-tight">
-          <span className="text-accent">T</span>amar
-          <span className="text-accent">.</span>
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <nav className="glass mx-auto flex max-w-6xl items-center justify-between rounded-full py-2 pl-2 pr-3 sm:pr-4">
+        <a href="#home" className="flex items-center gap-2.5 text-lg font-bold tracking-tight">
+          <Image
+            src="/logo.png"
+            alt="Tamar logo"
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 rounded-full shadow-[0_0_18px_rgba(34,211,238,0.35)]"
+          />
+          <span>
+            Tamar<span className="text-accent">.</span>
+          </span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -34,7 +44,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -55,7 +65,7 @@ export default function Header() {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background px-6 py-6 md:hidden">
+        <div className="glass mx-auto mt-2 max-w-6xl rounded-3xl px-6 py-6 md:hidden">
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>

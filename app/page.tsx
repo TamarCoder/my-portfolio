@@ -1,5 +1,6 @@
 import Header from "@/app/components/layout/header";
 import Footer from "@/app/components/layout/footer";
+import AuroraBackground from "@/app/components/layout/aurora-background";
 import Hero from "@/app/components/sections/hero";
 import Marquee from "@/app/components/sections/marquee";
 import Experience from "@/app/components/sections/experience";
@@ -11,6 +12,7 @@ import Contact from "@/app/components/sections/contact";
 export default function Home() {
   return (
     <>
+      <AuroraBackground />
       <Header />
       <main>
         <Hero />
