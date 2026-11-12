@@ -31,7 +31,7 @@ export default function FitToViewport({ children }: { children: ReactNode }) {
   return (
     <div
       ref={frameRef}
-      className={`flex h-full overflow-hidden ${isScaled ? "items-start" : "items-center"}`}
+      className={`flex h-full overflow-hidden ${isScaled ? "items-start" : "items-start md:items-center"}`}
     >
       <div
         ref={contentRef}

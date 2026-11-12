@@ -14,7 +14,7 @@ export default function Projects() {
   const goBy = (step: number) => setActiveIndex((i) => (i + step + projects.length) % projects.length);
 
   return (
-    <section id="projects" className="px-4 py-6 sm:px-6 md:py-10 lg:px-12">
+    <section id="projects" className="px-4 pb-6 pt-2 sm:px-6 md:py-10 lg:px-12">
       <div className="mx-auto flex max-w-[2200px] flex-col gap-4 md:h-[calc(100dvh-5rem)] md:gap-6">
         {/* Top bar — label + project tabs */}
         <div className="flex flex-wrap items-center justify-between gap-4">

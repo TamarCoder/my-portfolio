@@ -8,7 +8,7 @@ export default function Contact() {
   const { t } = useLanguage();
   const c = t.contact;
   return (
-    <section id="contact" className="flex min-h-full items-center py-6 md:py-10">
+    <section id="contact" className="flex min-h-full items-start pb-6 pt-2 md:items-center md:py-10">
       <div className="mx-auto grid w-full max-w-[2200px] items-stretch gap-5 px-4 sm:px-6 md:grid-cols-12 md:gap-8 lg:gap-10 lg:px-12">
         <div className="flex flex-col justify-center md:col-span-5">
           <p className="mb-2 font-mono text-xs md:mb-4 md:text-sm tracking-[0.3em] text-accent-light uppercase">{c.label}</p>

@@ -11,7 +11,7 @@ export default function Hero() {
   const { t } = useLanguage();
   const h = t.hero;
   return (
-    <section id="home" className="relative flex min-h-full items-center overflow-hidden px-4 py-8 sm:px-6 md:py-12 lg:px-12">
+    <section id="home" className="relative flex min-h-full items-start overflow-hidden px-4 pb-8 pt-2 md:items-center md:py-12 sm:px-6 lg:px-12">
       <div className="mx-auto grid w-full max-w-[2200px] items-center gap-8 md:grid-cols-12 lg:gap-16">
         <div className="md:col-span-7">
           <div className="glass mb-5 inline-flex max-w-full flex-wrap md:mb-8 items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4">

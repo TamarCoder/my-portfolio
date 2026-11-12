@@ -11,7 +11,7 @@ export default function Skills() {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="py-6 md:py-10">
+    <section id="skills" className="pb-6 pt-2 md:py-10">
       <div ref={ref} className="mx-auto max-w-[2200px] px-4 sm:px-6 lg:px-12">
         <SectionHeading label={t.skills.label} title={t.skills.title} />
 

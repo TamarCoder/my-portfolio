@@ -11,7 +11,7 @@ export default function Services() {
   const s = t.services;
 
   return (
-    <section id="services" className="px-4 py-6 sm:px-6 md:py-10 lg:px-12">
+    <section id="services" className="px-4 pb-6 pt-2 sm:px-6 md:py-10 lg:px-12">
       <div className="mx-auto grid max-w-[2200px] items-stretch gap-5 md:grid-cols-12 md:gap-8 lg:h-[calc(100dvh-5rem)]">
         {/* Left — heading + interactive list */}
         <div className="flex flex-col justify-center md:col-span-5 lg:col-span-6">

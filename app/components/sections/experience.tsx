@@ -12,7 +12,7 @@ const metricIcons = [Clock, Users, TrendingUp];
 export default function Experience() {
   const { t } = useLanguage();
   return (
-    <section id="about" className="px-4 py-6 sm:px-6 md:py-10 lg:px-12">
+    <section id="about" className="px-4 pb-6 pt-2 sm:px-6 md:py-10 lg:px-12">
       <div className="mx-auto grid max-w-[2200px] gap-4 md:grid-cols-12 md:gap-5 lg:h-[calc(100dvh-5rem)]">
         {/* Photo with name overlay */}
         <div data-tilt className="relative hidden min-h-72 overflow-hidden rounded-3xl border border-white/10 md:col-span-4 md:block lg:col-span-3">

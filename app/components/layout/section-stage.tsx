@@ -33,7 +33,7 @@ export default function SectionStage({ sections }: SectionStageProps) {
     <main className="fixed inset-0 md:left-24">
       <div
         key={active}
-        className={`h-full overflow-hidden pt-20 md:pt-0 ${isForward ? "animate-panel-up" : "animate-panel-down"}`}
+        className={`h-full overflow-hidden pt-[5.25rem] md:pt-0 ${isForward ? "animate-panel-up" : "animate-panel-down"}`}
       >
         <FitToViewport>{sections[active]}</FitToViewport>
       </div>
