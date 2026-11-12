@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ArrowDown } from "lucide-react";
 import { useActiveSection } from "@/app/providers/active-section-provider";
 import FitToViewport from "@/app/components/layout/fit-to-viewport";
@@ -21,19 +21,38 @@ export default function SectionStage({ sections }: SectionStageProps) {
   const index = order.indexOf(active);
   const [previousIndex, setPreviousIndex] = useState(index);
   const [isForward, setIsForward] = useState(true);
+  const [leaving, setLeaving] = useState<string | null>(null);
   if (previousIndex !== index) {
     setIsForward(index > previousIndex);
+    setLeaving(order[previousIndex] ?? null);
     setPreviousIndex(index);
   }
+
+  // Keep the old section on screen while it fades out, so the change is smooth.
+  useEffect(() => {
+    if (!leaving) return;
+    const timer = setTimeout(() => setLeaving(null), 650);
+    return () => clearTimeout(timer);
+  }, [leaving]);
   const next = order[index + 1];
 
   useStepNavigation(order, active);
 
   return (
     <main className="fixed inset-0 md:left-24">
+      {leaving && leaving !== active && (
+        <div
+          key={`leaving-${leaving}`}
+          aria-hidden
+          className={`pointer-events-none absolute inset-0 h-full overflow-hidden pt-[5.25rem] md:pt-0 ${isForward ? "animate-panel-out-up" : "animate-panel-out-down"}`}
+        >
+          <FitToViewport>{sections[leaving]}</FitToViewport>
+        </div>
+      )}
+
       <div
         key={active}
-        className={`h-full overflow-hidden pt-[5.25rem] md:pt-0 ${isForward ? "animate-panel-up" : "animate-panel-down"}`}
+        className={`absolute inset-0 h-full overflow-hidden pt-[5.25rem] md:pt-0 ${isForward ? "animate-panel-up" : "animate-panel-down"}`}
       >
         <FitToViewport>{sections[active]}</FitToViewport>
       </div>
