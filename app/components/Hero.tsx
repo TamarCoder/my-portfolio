@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowDown, Mail } from "lucide-react";
-import { LinkedInIcon } from "./ui/icons";
+import { FaLinkedin } from "react-icons/fa";
  
 
 const stats = [
@@ -52,7 +52,7 @@ export default function Hero() {
                 className="rounded-full border border-border p-3 text-muted-foreground transition-colors hover:border-accent hover:text-accent"
                 aria-label="LinkedIn"
               >
-                <LinkedInIcon size={18} />
+                <FaLinkedin size={18} />
               </a>
               <a
                 href="mailto:Thamuna.khuskivadze@gmail.com"

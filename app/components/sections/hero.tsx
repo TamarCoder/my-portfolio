@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Mail } from "lucide-react";
-import { LinkedInIcon } from "@/app/components/ui/icons";
+import { FaLinkedin } from "react-icons/fa";
 import Button from "@/app/components/ui/button";
 import HeroPortrait from "@/app/components/sections/hero-portrait";
 import { useLanguage } from "@/app/i18n/language-provider";
@@ -39,7 +39,7 @@ export default function Hero() {
             </Button>
             <Button href="#contact" variant="secondary">{h.getInTouch}</Button>
             <Button href={contactInfo.linkedin.url} variant="icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <LinkedInIcon size={18} />
+              <FaLinkedin size={18} />
             </Button>
             <Button href={`mailto:${contactInfo.email}`} variant="icon" aria-label="Email">
               <Mail size={18} />

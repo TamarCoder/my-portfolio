@@ -2,7 +2,7 @@
 
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
-import { LinkedInIcon } from "@/app/components/ui/icons";
+import { FaLinkedin } from "react-icons/fa";
 import IconBox from "@/app/components/ui/icon-box";
 import { contactInfo } from "@/app/lib/content/contact";
 import { useLanguage } from "@/app/i18n/language-provider";
@@ -41,7 +41,7 @@ export default function ContactChannels() {
   const { t } = useLanguage();
   const channels: Channel[] = [
     { icon: <Mail size={20} />, label: t.contact.email, value: contactInfo.email, href: `mailto:${contactInfo.email}` },
-    { icon: <LinkedInIcon size={20} />, label: t.contact.linkedin, value: contactInfo.linkedin.label, href: contactInfo.linkedin.url },
+    { icon: <FaLinkedin size={20} />, label: t.contact.linkedin, value: contactInfo.linkedin.label, href: contactInfo.linkedin.url },
     { icon: <MapPin size={20} />, label: t.contact.basedIn, value: t.contact.location },
   ];
   return (
