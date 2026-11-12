@@ -23,7 +23,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={sendByEmail} data-tilt className="glass relative flex h-full flex-col gap-4 overflow-hidden rounded-[2rem] p-8 lg:p-10">
+    <form onSubmit={sendByEmail} className="glass relative flex h-full flex-col gap-4 overflow-hidden rounded-[2rem] p-8 lg:p-10">
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/25 blur-[90px]" />
       <div className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-cyan-400/15 blur-[90px]" />
 

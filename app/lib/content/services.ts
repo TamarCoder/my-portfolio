@@ -22,7 +22,6 @@ export const services: Service[] = [
     stack: ["React", "Next.js", "Angular 21", "TypeScript", "Tailwind CSS"],
     proof: [
       { place: "WeGrids Web", result: "Sole frontend developer — streaming, reels, tournaments" },
-      { place: "Novatori", result: "React interfaces and API integration in a hybrid team" },
     ],
   },
   {
@@ -51,7 +50,6 @@ export const services: Service[] = [
     stack: ["SSR", "Code splitting", "Image optimization", "Lighthouse"],
     proof: [
       { place: "WeGrids Web", result: "Server-side rendering with Angular SSR" },
-      { place: "This portfolio", result: "Next.js image optimization and reduced-motion support" },
     ],
   },
   {

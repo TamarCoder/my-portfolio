@@ -1,5 +1,4 @@
 import Header from "@/app/components/layout/header";
-import Footer from "@/app/components/layout/footer";
 import AuroraBackground from "@/app/components/layout/aurora-background";
 import SectionStage from "@/app/components/layout/section-stage";
 import TiltOnHover from "@/app/components/effects/tilt-on-hover";
@@ -23,12 +22,7 @@ export default function Home() {
           "#services": <Services />,
           "#skills": <Skills />,
           "#projects": <Projects />,
-          "#contact": (
-            <>
-              <Contact />
-              <Footer />
-            </>
-          ),
+          "#contact": <Contact />,
         }}
       />
     </>
