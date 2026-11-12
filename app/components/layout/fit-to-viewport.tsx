@@ -15,9 +15,18 @@ export default function FitToViewport({ children }: { children: ReactNode }) {
     const content = contentRef.current;
     if (!frame || !content) return;
 
+    let frameSize = "";
+
+    // Grow only when the screen changes; otherwise the width change rewraps text and the scale flips back and forth.
     const measure = () => {
+      const size = `${frame.clientWidth}x${frame.clientHeight}`;
+      const screenChanged = size !== frameSize;
+      frameSize = size;
       const next = Math.min(1, frame.clientHeight / content.scrollHeight);
-      setScale((prev) => (Math.abs(prev - next) > MIN_CHANGE ? next : prev));
+      setScale((prev) => {
+        if (Math.abs(prev - next) <= MIN_CHANGE) return prev;
+        return screenChanged || next < prev ? next : prev;
+      });
     };
     const ro = new ResizeObserver(measure);
     ro.observe(frame);
