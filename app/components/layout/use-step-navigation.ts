@@ -1,32 +1,47 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const LOCK_MS = 900;
 const WHEEL_THRESHOLD = 25;
+const WHEEL_GAP_MS = 200;
 const SWIPE_THRESHOLD = 50;
 
 // Wheel, keyboard and swipe move one section at a time, instead of scrolling.
 export function useStepNavigation(order: string[], active: string) {
+  const orderRef = useRef(order);
+  const activeRef = useRef(active);
+  const lockedUntil = useRef(0);
+
   useEffect(() => {
-    let lockedUntil = 0;
+    orderRef.current = order;
+    activeRef.current = active;
+  }, [order, active]);
+
+  useEffect(() => {
+    let lastWheel = 0;
     let touchStartY = 0;
 
     const goBy = (step: number) => {
       const now = Date.now();
-      if (now < lockedUntil) return;
-      const next = order[order.indexOf(active) + step];
+      if (now < lockedUntil.current) return;
+      const list = orderRef.current;
+      const next = list[list.indexOf(activeRef.current) + step];
       if (!next) return;
-      lockedUntil = now + LOCK_MS;
+      lockedUntil.current = now + LOCK_MS;
       window.location.hash = next;
     };
 
     // Open dialogs (project modal) keep their own scrolling.
     const isInsideDialog = (e: Event) => !!(e.target as Element).closest?.("[data-no-step]");
 
+    // Trackpad momentum sends wheel events for a while; only a pause starts a new gesture.
     const onWheel = (e: WheelEvent) => {
       if (isInsideDialog(e)) return;
-      if (Math.abs(e.deltaY) > WHEEL_THRESHOLD) goBy(e.deltaY > 0 ? 1 : -1);
+      const now = Date.now();
+      const isNewGesture = now - lastWheel > WHEEL_GAP_MS;
+      lastWheel = now;
+      if (isNewGesture && Math.abs(e.deltaY) > WHEEL_THRESHOLD) goBy(e.deltaY > 0 ? 1 : -1);
     };
     const onKey = (e: KeyboardEvent) => {
       if (document.querySelector("[data-no-step]")) return;
@@ -51,5 +66,5 @@ export function useStepNavigation(order: string[], active: string) {
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
     };
-  }, [order, active]);
+  }, []);
 }
