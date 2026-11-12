@@ -17,7 +17,7 @@ export default function SideRailNav() {
   return (
     <aside className="fixed inset-y-0 left-0 z-50 hidden p-4 md:flex">
       <nav className="glass flex w-16 flex-col items-center justify-between rounded-3xl py-4">
-        <a href="#home" aria-label="Home">
+        <a href="/" aria-label="Home">
           <Image
             src="/logo.png"
             alt="Tamar logo"

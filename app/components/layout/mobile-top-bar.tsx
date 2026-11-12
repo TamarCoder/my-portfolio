@@ -18,7 +18,7 @@ export default function MobileTopBar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:hidden">
       <nav className="glass flex items-center justify-between rounded-full py-2 pl-2 pr-3">
-        <a href="#home" className="flex items-center gap-2.5 text-lg font-bold tracking-tight">
+        <a href="/" className="flex items-center gap-2.5 text-lg font-bold tracking-tight">
           <Image src="/logo.png" alt="Tamar logo" width={40} height={40} priority className="h-10 w-10 rounded-full" />
           <span>
             Tamar<span className="text-accent">.</span>

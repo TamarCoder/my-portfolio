@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { goToSection } from "@/app/providers/active-section-provider";
 
 const LOCK_MS = 900;
 const WHEEL_THRESHOLD = 25;
@@ -30,7 +31,7 @@ export function useStepNavigation(order: string[], active: string) {
       const next = list[list.indexOf(activeRef.current) + step];
       if (!next) return;
       lockedUntil.current = now + LOCK_MS;
-      window.location.hash = next;
+      goToSection(next);
     };
 
     // Open dialogs (project modal) keep their own scrolling.

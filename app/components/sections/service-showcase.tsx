@@ -51,7 +51,7 @@ export default function ServiceShowcase({ service, index, total }: ServiceShowca
       </div>
 
       <a
-        href="#contact"
+        href="/contact"
         className="group relative mt-5 inline-flex md:mt-10 w-fit items-center gap-3 rounded-full bg-linear-to-r from-accent to-cyan-500 px-6 py-3 text-sm font-medium text-white"
       >
         {t.services.startProject}

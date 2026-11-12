@@ -1,19 +1,14 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 
-const DEFAULT_SECTION = "#home";
-
-// The URL hash is the single source of truth, so every existing <a href="#..."> switches sections for free.
-function subscribeToHash(onChange: () => void) {
-  window.addEventListener("hashchange", onChange);
-  return () => window.removeEventListener("hashchange", onChange);
-}
-
-function readHash() {
-  return window.location.hash || DEFAULT_SECTION;
-}
-
+// The URL path is the single source of truth: "/" is Home, "/about" is About, and so on.
 export function useActiveSection() {
-  return useSyncExternalStore(subscribeToHash, readHash, () => DEFAULT_SECTION);
+  const pathname = usePathname();
+  return pathname.length > 1 ? pathname.replace(/\/$/, "") : "/";
+}
+
+// Switches section without a reload; Next.js syncs usePathname with pushState.
+export function goToSection(path: string) {
+  if (window.location.pathname !== path) window.history.pushState(null, "", path);
 }

@@ -34,10 +34,10 @@ export default function Hero() {
           </p>
 
           <div className="mb-8 flex flex-wrap items-center gap-3 md:mb-12">
-            <Button href="#projects" glow className="inline-flex items-center gap-2">
+            <Button href="/projects" glow className="inline-flex items-center gap-2">
               {h.seeWork} <ArrowUpRight size={16} />
             </Button>
-            <Button href="#contact" variant="secondary">{h.getInTouch}</Button>
+            <Button href="/contact" variant="secondary">{h.getInTouch}</Button>
             <Button href={contactInfo.linkedin.url} variant="icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedin size={18} />
             </Button>
