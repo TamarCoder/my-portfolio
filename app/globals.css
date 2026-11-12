@@ -207,7 +207,7 @@ body {
 
 .animate-panel-up, .animate-panel-down,
 .animate-panel-out-up, .animate-panel-out-down {
-  animation-duration: 0.65s;
+  animation-duration: 0.45s;
   animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
   animation-fill-mode: both;
   will-change: transform, opacity;

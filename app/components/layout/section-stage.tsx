@@ -31,7 +31,7 @@ export default function SectionStage({ sections }: SectionStageProps) {
   // Keep the old section on screen while it fades out, so the change is smooth.
   useEffect(() => {
     if (!leaving) return;
-    const timer = setTimeout(() => setLeaving(null), 650);
+    const timer = setTimeout(() => setLeaving(null), 450);
     return () => clearTimeout(timer);
   }, [leaving]);
   const next = order[index + 1];
