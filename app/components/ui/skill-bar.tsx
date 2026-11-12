@@ -1,4 +1,4 @@
-import type { Skill } from "@/app/lib/data";
+import type { Skill } from "@/app/lib/content/skills";
 
 export default function SkillBar({ name, level }: Skill) {
   return (

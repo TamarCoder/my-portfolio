@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/app/providers/theme-provider";
 import { useActiveSection } from "@/app/providers/active-section-provider";
-import { navLinks } from "@/app/lib/data";
+import { navLinks } from "@/app/lib/content/navigation";
 import { navIcons } from "@/app/components/layout/nav-icons";
 
 export default function SideRailNav() {

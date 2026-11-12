@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/app/providers/theme-provider";
 import { useActiveSection } from "@/app/providers/active-section-provider";
-import { navLinks } from "@/app/lib/data";
+import { navLinks } from "@/app/lib/content/navigation";
 
 export default function MobileTopBar() {
   const { theme, toggleTheme } = useTheme();

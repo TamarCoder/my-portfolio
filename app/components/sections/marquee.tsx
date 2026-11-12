@@ -1,4 +1,4 @@
-import { marqueeItems } from "@/app/lib/data";
+import { marqueeItems } from "@/app/lib/content/navigation";
 
 export default function Marquee() {
   const doubled = [...marqueeItems, ...marqueeItems];

@@ -7,7 +7,7 @@ import Button from "@/app/components/ui/button";
 import Card from "@/app/components/ui/card";
 import { Input, Textarea } from "@/app/components/ui/input";
 import IconBox from "@/app/components/ui/icon-box";
-import { contactInfo } from "@/app/lib/data";
+import { contactInfo } from "@/app/lib/content/contact";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-10">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+      <div className="mx-auto max-w-[2200px] px-6 lg:px-12">
         <Card className="overflow-hidden">
           <div className="grid lg:grid-cols-5">
             {/* Left — info panel */}

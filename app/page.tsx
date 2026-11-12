@@ -4,7 +4,6 @@ import AuroraBackground from "@/app/components/layout/aurora-background";
 import SectionStage from "@/app/components/layout/section-stage";
 import TiltOnHover from "@/app/components/effects/tilt-on-hover";
 import Hero from "@/app/components/sections/hero";
-import Marquee from "@/app/components/sections/marquee";
 import Experience from "@/app/components/sections/experience";
 import Services from "@/app/components/sections/services";
 import Skills from "@/app/components/sections/skills";
@@ -20,12 +19,7 @@ export default function Home() {
       <SectionStage
         sections={{
           "#home": <Hero />,
-          "#about": (
-            <>
-              <Marquee />
-              <Experience />
-            </>
-          ),
+          "#about": <Experience />,
           "#services": <Services />,
           "#skills": <Skills />,
           "#projects": <Projects />,

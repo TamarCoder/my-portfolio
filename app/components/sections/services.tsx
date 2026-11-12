@@ -1,46 +1,59 @@
-import { ArrowUpRight } from "lucide-react";
-import SectionHeading from "@/app/components/ui/section-heading";
-import Card from "@/app/components/ui/card";
-import IconBox from "@/app/components/ui/icon-box";
-import { services } from "@/app/lib/data";
+"use client";
+
+import { useState } from "react";
+import ServiceShowcase from "@/app/components/sections/service-showcase";
+import { services } from "@/app/lib/content/services";
 
 export default function Services() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section id="services" className="py-10">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
-        <SectionHeading label="Services" title="What I Can Do For You" />
+    <section id="services" className="px-6 py-10 lg:px-12">
+      <div className="mx-auto grid max-w-[2200px] items-stretch gap-8 lg:h-[calc(100dvh-5rem)] lg:grid-cols-12">
+        {/* Left — heading + interactive list */}
+        <div className="flex flex-col justify-center lg:col-span-6">
+          <p className="mb-3 font-mono text-xs tracking-[0.3em] text-accent-light uppercase">03 / Services</p>
+          <h2 className="mb-8 text-4xl font-bold leading-tight xl:text-5xl">
+            What I can <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">build</span> for you
+          </h2>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <Card key={service.title} hover className="group flex flex-col overflow-hidden p-7">
-              <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent-light to-transparent opacity-60" />
+          <ul className="border-t border-white/10">
+            {services.map((service, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <li key={service.title} className="border-b border-white/10">
+                  <button
+                    onMouseEnter={() => setActiveIndex(i)}
+                    onFocus={() => setActiveIndex(i)}
+                    onClick={() => setActiveIndex(i)}
+                    aria-pressed={isActive}
+                    className="group flex w-full items-center gap-6 py-4 text-left"
+                  >
+                    <span className={`font-mono text-sm transition-colors ${isActive ? "text-cyan-300" : "text-muted-foreground/60"}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`flex-1 text-xl font-semibold transition-all duration-300 xl:text-2xl ${
+                        isActive ? "translate-x-2 text-foreground" : "text-muted-foreground group-hover:text-foreground"
+                      }`}
+                    >
+                      {service.title}
+                    </span>
+                    <span
+                      className={`h-1 rounded-full bg-linear-to-r from-accent to-cyan-400 transition-all duration-500 ${
+                        isActive ? "w-16 opacity-100" : "w-0 opacity-0"
+                      }`}
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-              <div className="mb-8 flex items-start justify-between">
-                <IconBox
-                  size="xl"
-                  className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
-                >
-                  <service.icon size={28} strokeWidth={1.75} />
-                </IconBox>
-                <span className="bg-linear-to-b from-foreground/25 to-transparent bg-clip-text font-mono text-5xl font-bold text-transparent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-
-              <h3 className="mb-3 text-xl font-semibold">{service.title}</h3>
-              <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {service.description}
-              </p>
-
-              <div className="flex items-center justify-between border-t border-white/10 pt-4">
-                <div className="h-1 w-10 rounded-full bg-linear-to-r from-accent to-cyan-400 transition-all duration-500 group-hover:w-24" />
-                <ArrowUpRight
-                  size={18}
-                  className="text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-light"
-                />
-              </div>
-            </Card>
-          ))}
+        {/* Right — preview of the active service */}
+        <div className="lg:col-span-6">
+          <ServiceShowcase service={services[activeIndex]} index={activeIndex} total={services.length} />
         </div>
       </div>
     </section>

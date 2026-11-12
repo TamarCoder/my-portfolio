@@ -205,3 +205,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-panel-up, .animate-panel-down { animation: none; }
 }
+
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .animate-float { animation: none; } }

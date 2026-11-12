@@ -2,7 +2,9 @@
 
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
-// Shrinks the content when it is taller than the screen, so the page never needs to scroll.
+const MIN_CHANGE = 0.01;
+
+// Shrinks tall content to fit the screen height, but widens it first so it still fills the full width.
 export default function FitToViewport({ children }: { children: ReactNode }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -14,8 +16,8 @@ export default function FitToViewport({ children }: { children: ReactNode }) {
     if (!frame || !content) return;
 
     const measure = () => {
-      const ratio = frame.clientHeight / content.scrollHeight;
-      setScale(Math.min(1, ratio));
+      const next = Math.min(1, frame.clientHeight / content.scrollHeight);
+      setScale((prev) => (Math.abs(prev - next) > MIN_CHANGE ? next : prev));
     };
     const ro = new ResizeObserver(measure);
     ro.observe(frame);
@@ -24,12 +26,20 @@ export default function FitToViewport({ children }: { children: ReactNode }) {
     return () => ro.disconnect();
   }, []);
 
+  const isScaled = scale < 1;
+
   return (
-    <div ref={frameRef} className="flex h-full items-center justify-center overflow-hidden">
+    <div
+      ref={frameRef}
+      className={`flex h-full overflow-hidden ${isScaled ? "items-start" : "items-center"}`}
+    >
       <div
         ref={contentRef}
-        className="w-full origin-center"
-        style={{ transform: scale < 1 ? `scale(${scale})` : undefined }}
+        className="shrink-0 origin-top-left"
+        style={{
+          width: `${100 / scale}%`,
+          transform: isScaled ? `scale(${scale})` : undefined,
+        }}
       >
         {children}
       </div>

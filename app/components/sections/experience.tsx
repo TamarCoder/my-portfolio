@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { Briefcase, TrendingUp, Users, Clock } from "lucide-react";
-import SectionHeading from "@/app/components/ui/section-heading";
+import { TrendingUp, Users, Clock } from "lucide-react";
 import Card from "@/app/components/ui/card";
 import IconBox from "@/app/components/ui/icon-box";
-import { experiences } from "@/app/lib/data";
+import ExperienceTimeline from "@/app/components/sections/experience-timeline";
 
 const metrics = [
   { icon: Clock, value: "30%", label: "Faster processing" },
@@ -13,104 +12,59 @@ const metrics = [
 
 export default function Experience() {
   return (
-    <section id="about" className="py-10">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
-        <SectionHeading label="About Me" title="Who I Am" />
-
-        {/* Bento grid: photo + bio + metrics */}
-        <div className="mb-12 grid gap-4 md:grid-cols-4">
-          {/* Photo card */}
-          <div className="relative overflow-hidden rounded-2xl border border-border md:row-span-2">
-            <Image
-              src="/profile-about.jpg"
-              alt="Tamar Khuskivadze"
-              fill
-              className="object-cover object-top"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <p className="text-sm font-semibold text-white">
-                Tamar Khuskivadze
-              </p>
-              <p className="text-xs text-white/70">
-                Frontend &amp; Mobile Developer
-              </p>
-            </div>
+    <section id="about" className="px-6 py-10 lg:px-12">
+      <div className="mx-auto grid max-w-[2200px] gap-5 lg:h-[calc(100dvh-5rem)] lg:grid-cols-12">
+        {/* Photo with name overlay */}
+        <div data-tilt className="relative min-h-80 overflow-hidden rounded-3xl border border-white/10 lg:col-span-3">
+          <Image src="/profile-about.jpg" alt="Tamar Khuskivadze" fill className="object-cover object-top" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
+          <div className="absolute inset-x-5 bottom-5">
+            <p className="mb-1 font-mono text-[11px] tracking-[0.25em] text-cyan-300 uppercase">02 / About</p>
+            <p className="text-2xl font-bold text-white">Tamar Khuskivadze</p>
+            <p className="text-sm text-white/70">Frontend &amp; Mobile Developer</p>
           </div>
+        </div>
 
-          {/* Bio card */}
-          <Card className="p-8 md:col-span-3">
-            <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+        {/* Story + metrics */}
+        <div className="flex flex-col gap-5 lg:col-span-5">
+          <Card className="flex flex-1 flex-col justify-center p-7 lg:p-9">
+            <h2 className="mb-5 text-3xl font-bold leading-tight xl:text-4xl">
+              Who I <span className="bg-linear-to-r from-accent-light to-cyan-400 bg-clip-text text-transparent">Am</span>
+            </h2>
+            <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                As a React Frontend &amp; React Native Developer, I bring a
-                blend of technical expertise and a unique perspective shaped by a
-                diverse background. With experience in JavaScript&nbsp;(ES6+),
-                React.js, React Native with Expo, HTML5, CSS3, and responsive
-                design, I specialize in building high-performance, user-friendly
-                web and mobile applications.
+                As a React Frontend &amp; React Native Developer, I build high-performance,
+                user-friendly web and mobile apps with JavaScript&nbsp;(ES6+), React.js,
+                React Native with Expo, HTML5, CSS3 and responsive design.
               </p>
               <p>
-                Before transitioning to development, I gained valuable insights
-                from roles in software operations management and healthcare
-                economics, where I honed my problem-solving abilities and
-                learned how to optimize systems for better efficiency — leading a
-                project to fully digitize a clinic&apos;s administrative
-                processes.
+                Before development, I worked in software operations management and
+                healthcare economics — leading a project to fully digitize a
+                clinic&apos;s administrative processes.
               </p>
               <p>
-                These experiences sharpened my ability to analyze complex
-                systems, communicate effectively with stakeholders, and work
-                collaboratively across teams. I approach every task with a
-                strategic mindset, always aiming for efficiency and user
-                satisfaction.
+                That taught me to analyze complex systems, talk clearly with
+                stakeholders and work across teams — always aiming for efficiency
+                and user satisfaction.
               </p>
             </div>
           </Card>
 
-          {/* Metric cards */}
-          {metrics.map((metric) => (
-            <Card key={metric.label} hover className="flex items-center gap-4 p-5">
-              <IconBox>
-                <metric.icon size={18} />
-              </IconBox>
-              <div>
-                <p className="text-xl font-bold text-accent">{metric.value}</p>
+          <div className="grid grid-cols-3 gap-4">
+            {metrics.map((metric) => (
+              <Card key={metric.label} hover className="p-4">
+                <IconBox className="mb-3">
+                  <metric.icon size={18} />
+                </IconBox>
+                <p className="text-2xl font-bold text-accent-light">{metric.value}</p>
                 <p className="text-xs text-muted-foreground">{metric.label}</p>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
 
-        {/* Experience */}
-        <SectionHeading label="Experience" title="My Professional Journey" />
-
-        <div className="space-y-4">
-          {experiences.map((exp) => (
-            <Card key={exp.company} hover className="group p-6">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="flex items-start gap-4">
-                  <IconBox className="mt-0.5">
-                    <Briefcase
-                      size={18}
-                      className="transition-transform group-hover:scale-110"
-                    />
-                  </IconBox>
-                  <div>
-                    <h3 className="text-lg font-semibold">{exp.role}</h3>
-                    <p className="text-sm font-medium text-accent">
-                      {exp.company}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {exp.description}
-                    </p>
-                  </div>
-                </div>
-                <span className="shrink-0 text-xs text-muted-foreground sm:mt-1">
-                  {exp.period}
-                </span>
-              </div>
-            </Card>
-          ))}
+        <div className="lg:col-span-4">
+          <ExperienceTimeline />
         </div>
       </div>
     </section>

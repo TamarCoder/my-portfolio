@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import SectionHeading from "@/app/components/ui/section-heading";
-import { skills, journey } from "@/app/lib/data";
+import { skills } from "@/app/lib/content/skills";
+import { journey } from "@/app/lib/content/experience";
 
 // Fires once when the element first scrolls into view.
 function useInView<T extends Element>() {
@@ -60,7 +61,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-10">
-      <div ref={ref} className="mx-auto max-w-[1600px] px-6 lg:px-12">
+      <div ref={ref} className="mx-auto max-w-[2200px] px-6 lg:px-12">
         <SectionHeading label="Skills & Journey" title="My Skills & Experience" />
 
         <div className="grid gap-12 lg:grid-cols-5">

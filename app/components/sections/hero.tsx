@@ -2,7 +2,8 @@ import Image from "next/image";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkedInIcon } from "@/app/components/ui/icons";
 import Button from "@/app/components/ui/button";
-import { stats, contactInfo } from "@/app/lib/data";
+import { stats } from "@/app/lib/content/navigation";
+import { contactInfo } from "@/app/lib/content/contact";
 
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-full flex-col justify-center overflow-hidden px-6 py-12 lg:px-12"
     >
-      <div className="mx-auto w-full max-w-[1600px]">
+      <div className="mx-auto w-full max-w-[2200px]">
         {/* Top row — status + location */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5">
@@ -30,13 +31,13 @@ export default function Hero() {
           <span className="block text-[clamp(1.25rem,2.4vw,2.25rem)] font-medium tracking-tight text-muted-foreground">
             Hi, I&apos;m
           </span>
-          <span className="block bg-linear-to-r from-foreground via-accent-light to-cyan-400 bg-clip-text text-[clamp(4rem,15vw,15rem)] text-transparent">
+          <span className="block bg-linear-to-r from-foreground via-accent-light to-cyan-400 bg-clip-text text-[clamp(4rem,min(15vw,24vh),18rem)] text-transparent">
             TAMAR
           </span>
         </h1>
 
         {/* Divider line */}
-        <div className="my-8 h-px w-full bg-linear-to-r from-accent via-cyan-400/60 to-transparent" />
+        <div className="my-[3vh] h-px w-full bg-linear-to-r from-accent via-cyan-400/60 to-transparent" />
 
         {/* Bottom grid — role, text, actions | stats | photo */}
         <div className="grid items-end gap-10 lg:grid-cols-12">
@@ -83,7 +84,7 @@ export default function Hero() {
           <div className="flex justify-center lg:col-span-3 lg:justify-end">
             <div data-tilt className="rounded-3xl">
               <div className="glass absolute -inset-3 rotate-3 rounded-[2rem]" />
-              <div className="relative h-72 w-56 overflow-hidden rounded-3xl border border-white/10 sm:h-80 sm:w-64">
+              <div className="relative h-[clamp(14rem,34vh,26rem)] w-[clamp(11rem,26vh,20rem)] overflow-hidden rounded-3xl border border-white/10">
                 <Image
                   src="/profile-hero.jpg"
                   alt="Tamar Khuskivadze"
