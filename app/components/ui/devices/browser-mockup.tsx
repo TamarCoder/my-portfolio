@@ -9,11 +9,13 @@ interface BrowserMockupProps {
   // Width / height of the screenshot, so it is shown whole instead of cropped.
   aspect?: number;
   sizes?: string;
+  // "contain" never crops; use it when the screenshot must show edge to edge.
+  fit?: "cover" | "contain";
   children?: ReactNode;
 }
 
 // Glass browser window with traffic lights and an address bar.
-export default function BrowserMockup({ src, alt, url = "", className = "", aspect = 16 / 9, sizes = "900px", children }: BrowserMockupProps) {
+export default function BrowserMockup({ src, alt, url = "", className = "", aspect = 16 / 9, sizes = "900px", fit = "cover", children }: BrowserMockupProps) {
   return (
     <div className={`glass overflow-hidden rounded-2xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] ${className}`}>
       <div className="flex items-center gap-3 border-b border-white/10 px-4 py-2.5">
@@ -27,7 +29,7 @@ export default function BrowserMockup({ src, alt, url = "", className = "", aspe
         </div>
       </div>
       <div className="relative bg-zinc-950" style={{ aspectRatio: aspect }}>
-        {src ? <Image src={src} alt={alt} fill sizes={sizes} quality={90} className="object-cover object-top" /> : children}
+        {src ? <Image src={src} alt={alt} fill sizes={sizes} quality={90} className={fit === "contain" ? "object-contain" : "object-cover object-top"} /> : children}
       </div>
     </div>
   );

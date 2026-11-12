@@ -11,20 +11,20 @@ export default function Skills() {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="py-10">
-      <div ref={ref} className="mx-auto max-w-[2200px] px-6 lg:px-12">
+    <section id="skills" className="py-6 md:py-10">
+      <div ref={ref} className="mx-auto max-w-[2200px] px-4 sm:px-6 lg:px-12">
         <SectionHeading label={t.skills.label} title={t.skills.title} />
 
-        <div className="grid gap-12 lg:grid-cols-5">
+        <div className="grid gap-6 md:grid-cols-5 md:gap-8 lg:gap-12">
           {/* Skills — glass cards with animated rings */}
-          <div className="lg:col-span-3">
-            <h3 className="mb-5 text-lg font-semibold">{t.skills.techStack}</h3>
-            <div className="grid gap-3 sm:grid-cols-2">
+          <div className="md:col-span-3">
+            <h3 className="mb-3 text-lg font-semibold md:mb-5">{t.skills.techStack}</h3>
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
               {skills.map((skill, i) => (
                 <div
                   key={skill.name}
                   data-tilt
-                  className={`glass group flex items-center gap-4 rounded-2xl p-3 pr-5 hover:border-accent/40 ${
+                  className={`glass group flex items-center gap-2 rounded-2xl p-2 pr-3 md:gap-4 md:p-3 md:pr-5 hover:border-accent/40 ${
                     inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                   }`}
                   style={{ transitionDelay: inView ? `${i * 70}ms` : "0ms" }}
@@ -35,7 +35,7 @@ export default function Skills() {
                       {skill.level}
                     </span>
                   </div>
-                  <span className="text-sm font-medium transition-colors group-hover:text-accent-light">
+                  <span className="text-xs font-medium transition-colors md:text-sm group-hover:text-accent-light">
                     {skill.name}
                   </span>
                 </div>
@@ -44,9 +44,9 @@ export default function Skills() {
           </div>
 
           {/* Journey — glass timeline */}
-          <div className="lg:col-span-2">
-            <h3 className="mb-5 text-lg font-semibold">{t.skills.journey}</h3>
-            <div className="relative space-y-4 pl-8">
+          <div className="md:col-span-2">
+            <h3 className="mb-3 text-lg font-semibold md:mb-5">{t.skills.journey}</h3>
+            <div className="relative space-y-2 pl-8 md:space-y-4">
               <div className="absolute bottom-3 left-[11px] top-3 w-px bg-linear-to-b from-accent via-cyan-400 to-transparent" />
               {t.journey.map((item, i) => (
                 <div
@@ -59,12 +59,12 @@ export default function Skills() {
                   <span className="absolute -left-8 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-background ring-2 ring-accent shadow-[0_0_14px_var(--accent-glow)]">
                     <span className="h-2 w-2 rounded-full bg-linear-to-br from-accent-light to-cyan-400" />
                   </span>
-                  <div data-tilt className="glass rounded-2xl p-4 hover:border-accent/40">
+                  <div data-tilt className="glass rounded-2xl p-3 hover:border-accent/40 md:p-4">
                     <span className="inline-block rounded-full bg-accent/15 px-2.5 py-0.5 font-mono text-xs text-accent-light">
                       {item.year}
                     </span>
                     <h4 className="mt-2 text-sm font-semibold">{item.title}</h4>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+                    <p className="mt-1 hidden text-sm text-muted-foreground lg:block">{item.description}</p>
                   </div>
                 </div>
               ))}

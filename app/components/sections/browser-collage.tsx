@@ -8,32 +8,35 @@ interface BrowserCollageProps {
   extras: string[];
 }
 
-// Corner slots for the extra screens; they overlap the browser edges so the group reads as one piece.
-const slots = [
-  "-left-[2%] top-[2%] -rotate-3",
-  "-right-[2%] top-0 rotate-2 [animation-delay:-1.5s]",
-  "-left-[1%] bottom-[2%] rotate-2 [animation-delay:-3s]",
-  "-right-[1%] bottom-0 -rotate-2 [animation-delay:-4.5s]",
-];
+const tilts = ["-rotate-2", "rotate-1 [animation-delay:-1.5s]", "-rotate-1 [animation-delay:-3s]", "rotate-2 [animation-delay:-4.5s]"];
 
-// Main screen in a browser, up to four more as floating glass cards around it.
+// Main screen in a browser, the other screens as a row of glass cards that tuck under its bottom edge.
+// Normal flow (no absolute positioning) so nothing covers the main screen at any width.
 export default function BrowserCollage({ title, host, main, extras }: BrowserCollageProps) {
   return (
-    <div className="relative h-full w-full">
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <BrowserMockup src={main} alt={`${title} home`} url={host} aspect={1425 / 665} sizes="(min-width: 1024px) 60vw, 90vw" className="w-[70%] max-w-[60rem]" />
-      </div>
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <BrowserMockup
+        src={main}
+        alt={`${title} home`}
+        url={host}
+        aspect={1425 / 665}
+        sizes="(min-width: 768px) 55vw, 95vw"
+        fit="contain"
+        className="relative z-10 w-full max-w-[56rem]"
+      />
 
-      {extras.slice(0, slots.length).map((src, i) => (
-        <div
-          key={src}
-          className={`glass animate-float absolute z-20 hidden w-[24%] max-w-xs rounded-2xl p-1.5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_-12px_var(--accent-glow)] sm:block ${slots[i]}`}
-        >
-          <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950">
-            <Image src={src} alt={`${title} screen ${i + 2}`} fill sizes="(min-width: 1024px) 20rem, 30vw" quality={90} className="object-cover object-top" />
-          </div>
-        </div>
-      ))}
+      <ul className="relative z-20 -mt-[4%] grid w-[94%] max-w-[52rem] grid-cols-4 gap-[2%]">
+        {extras.slice(0, tilts.length).map((src, i) => (
+          <li
+            key={src}
+            className={`glass animate-float rounded-xl p-1 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8),0_0_30px_-10px_var(--accent-glow)] sm:rounded-2xl sm:p-1.5 ${tilts[i]}`}
+          >
+            <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-zinc-950 sm:rounded-xl">
+              <Image src={src} alt={`${title} screen ${i + 2}`} fill sizes="(min-width: 768px) 14rem, 24vw" quality={90} className="object-cover object-top" />
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

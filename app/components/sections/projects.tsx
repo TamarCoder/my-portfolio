@@ -14,8 +14,8 @@ export default function Projects() {
   const goBy = (step: number) => setActiveIndex((i) => (i + step + projects.length) % projects.length);
 
   return (
-    <section id="projects" className="px-6 py-10 lg:px-12">
-      <div className="mx-auto flex max-w-[2200px] flex-col gap-6 lg:h-[calc(100dvh-5rem)]">
+    <section id="projects" className="px-4 py-6 sm:px-6 md:py-10 lg:px-12">
+      <div className="mx-auto flex max-w-[2200px] flex-col gap-4 md:h-[calc(100dvh-5rem)] md:gap-6">
         {/* Top bar — label + project tabs */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="font-mono text-xs tracking-[0.3em] text-accent-light uppercase">{t.projects.label}</p>
@@ -36,14 +36,14 @@ export default function Projects() {
         </div>
 
         {/* Stage — devices + info */}
-        <div className="relative grid flex-1 items-center gap-10 lg:grid-cols-12">
+        <div className="relative grid flex-1 items-center gap-5 md:grid-cols-12 md:gap-8 lg:gap-10">
           <div className="pointer-events-none absolute left-1/4 top-1/2 h-[60%] w-[40%] -translate-y-1/2 rounded-full bg-accent/25 blur-[120px]" />
-          <div key={project.id} className="animate-fade-in-up relative h-[52vh] lg:col-span-7 lg:h-full">
+          <div key={project.id} className="animate-fade-in-up relative h-[34vh] md:col-span-7 md:h-full">
             <ProjectDevices project={project} />
           </div>
-          <div className="relative lg:col-span-5">
+          <div className="relative md:col-span-5">
             <ProjectInfo project={project} />
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-5 flex items-center gap-4 md:mt-8">
               <button onClick={() => goBy(-1)} aria-label={t.projects.previous} className="glass flex h-11 w-11 items-center justify-center rounded-full hover:text-accent-light">
                 <ChevronLeft size={18} />
               </button>

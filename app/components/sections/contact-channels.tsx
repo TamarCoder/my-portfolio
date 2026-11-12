@@ -17,7 +17,7 @@ interface Channel {
 function ChannelCard({ channel }: { channel: Channel }) {
   const body = (
     <>
-      <IconBox size="lg" className="shrink-0">{channel.icon}</IconBox>
+      <IconBox size="lg" className="h-10 w-10 shrink-0 md:h-12 md:w-12">{channel.icon}</IconBox>
       <span className="min-w-0 flex-1">
         <span className="block font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">{channel.label}</span>
         <span className="block truncate text-base font-medium">{channel.value}</span>
@@ -27,7 +27,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
       )}
     </>
   );
-  const style = "glass group flex items-center gap-4 rounded-2xl p-4 transition-colors";
+  const style = "glass group flex items-center gap-3 rounded-2xl p-3 transition-colors md:gap-4 md:p-4";
   if (!channel.href) return <div className={style}>{body}</div>;
   const isExternal = channel.href.startsWith("http");
   return (
@@ -45,7 +45,7 @@ export default function ContactChannels() {
     { icon: <MapPin size={20} />, label: t.contact.basedIn, value: t.contact.location },
   ];
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2 md:gap-3">
       {channels.map((channel) => (
         <ChannelCard key={channel.label} channel={channel} />
       ))}

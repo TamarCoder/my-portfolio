@@ -26,19 +26,19 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={sendByEmail} className="glass relative flex h-full flex-col gap-4 overflow-hidden rounded-[2rem] p-8 lg:p-10">
+    <form onSubmit={sendByEmail} className="glass relative flex h-full flex-col gap-4 overflow-hidden rounded-[2rem] p-5 md:p-8 lg:p-10">
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/25 blur-[90px]" />
       <div className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-cyan-400/15 blur-[90px]" />
 
-      <h3 className="relative mb-2 text-2xl font-semibold">{c.formTitle}</h3>
+      <h3 className="relative text-xl font-semibold md:mb-2 md:text-2xl">{c.formTitle}</h3>
       <div className="relative grid gap-4 sm:grid-cols-2">
         <Input type="text" name="name" placeholder={c.name} required value={form.name} onChange={updateField} />
         <Input type="email" name="email" placeholder={c.yourEmail} required value={form.email} onChange={updateField} />
       </div>
       <Input type="text" name="subject" placeholder={c.subject} required value={form.subject} onChange={updateField} className="relative w-full" />
-      <Textarea name="message" placeholder={c.message} required rows={6} value={form.message} onChange={updateField} className="relative w-full flex-1" />
+      <Textarea name="message" placeholder={c.message} required rows={4} value={form.message} onChange={updateField} className="relative w-full flex-1" />
       <div className="relative flex flex-wrap items-center justify-between gap-4">
-        <span className="text-sm text-muted-foreground">{c.replyTime}</span>
+        <span className="hidden text-sm text-muted-foreground sm:inline">{c.replyTime}</span>
         <Button type="submit">
           {c.send}
           <Send size={16} className="ml-2 inline" />

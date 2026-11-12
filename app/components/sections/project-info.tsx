@@ -10,10 +10,10 @@ export default function ProjectInfo({ project }: { project: Project }) {
   return (
     <div key={project.id} className="animate-fade-in-up">
       <p className="mb-2 font-mono text-xs tracking-[0.25em] text-cyan-300 uppercase">{text.category}</p>
-      <h3 className="mb-4 text-4xl font-bold leading-tight xl:text-5xl">{project.title}</h3>
-      <p className="mb-6 max-w-xl leading-relaxed text-muted-foreground">{text.description}</p>
+      <h3 className="mb-2 text-3xl font-bold leading-tight md:mb-4 lg:text-4xl xl:text-5xl">{project.title}</h3>
+      <p className="mb-4 line-clamp-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:mb-6 md:line-clamp-none md:text-base">{text.description}</p>
 
-      <ul className="mb-6 grid max-w-xl grid-cols-2 gap-2">
+      <ul className="mb-6 hidden max-w-xl grid-cols-2 gap-2 sm:grid">
         {text.highlights.map((item) => (
           <li key={item} className="flex items-center gap-2 text-sm">
             <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-accent to-cyan-500 text-white">
@@ -24,7 +24,7 @@ export default function ProjectInfo({ project }: { project: Project }) {
         ))}
       </ul>
 
-      <div className="mb-7 flex max-w-xl flex-wrap gap-2">
+      <div className="mb-5 flex max-w-xl flex-wrap gap-2 md:mb-7">
         {project.tags.map((tag) => (
           <span key={tag} className="glass rounded-full px-3 py-1 text-xs text-muted-foreground">
             {tag}
