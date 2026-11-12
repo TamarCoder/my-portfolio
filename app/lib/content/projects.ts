@@ -22,11 +22,11 @@ export const projects: Project[] = [
     device: "browser",
     // First is the main browser screen; the rest float around it.
     screens: [
-      "/projects/WeGrids/01-hero.jpg",
-      "/projects/WeGrids/04-tournaments.jpg",
-      "/projects/WeGrids/03-streaming.jpg",
-      "/projects/WeGrids/05-badges.jpg",
-      "/projects/WeGrids/06-social.jpg",
+      "/projects/WeGrids/01-hero.png",
+      "/projects/WeGrids/04-tournaments.png",
+      "/projects/WeGrids/03-streaming.png",
+      "/projects/WeGrids/05-badges.png",
+      "/projects/WeGrids/06-social.png",
     ],
     github: null,
     live: "https://www.wegrids.com",
