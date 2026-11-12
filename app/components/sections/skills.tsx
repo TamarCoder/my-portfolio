@@ -20,14 +20,11 @@ export default function Skills() {
           <div className="md:col-span-3">
             <h3 className="mb-3 text-lg font-semibold md:mb-5">{t.skills.techStack}</h3>
             <div className="grid grid-cols-2 gap-2 md:gap-3">
-              {skills.map((skill, i) => (
+              {skills.map((skill) => (
                 <div
                   key={skill.name}
                   data-tilt
-                  className={`glass group flex items-center gap-2 rounded-2xl p-2 pr-3 md:gap-4 md:p-3 md:pr-5 hover:border-accent/40 ${
-                    inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                  }`}
-                  style={{ transitionDelay: inView ? `${i * 70}ms` : "0ms" }}
+                  className="glass group flex items-center gap-2 rounded-2xl p-2 pr-3 md:gap-4 md:p-3 md:pr-5 hover:border-accent/40"
                 >
                   <div className="relative shrink-0">
                     <SkillRing level={skill.level} show={inView} />
@@ -48,14 +45,8 @@ export default function Skills() {
             <h3 className="mb-3 text-lg font-semibold md:mb-5">{t.skills.journey}</h3>
             <div className="relative space-y-2 pl-8 md:space-y-4">
               <div className="absolute bottom-3 left-[11px] top-3 w-px bg-linear-to-b from-accent via-cyan-400 to-transparent" />
-              {t.journey.map((item, i) => (
-                <div
-                  key={item.year}
-                  className={`relative transition-all duration-700 ${
-                    inView ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
-                  }`}
-                  style={{ transitionDelay: inView ? `${200 + i * 120}ms` : "0ms" }}
-                >
+              {t.journey.map((item) => (
+                <div key={item.year} className="relative">
                   <span className="absolute -left-8 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-background ring-2 ring-accent shadow-[0_0_14px_var(--accent-glow)]">
                     <span className="h-2 w-2 rounded-full bg-linear-to-br from-accent-light to-cyan-400" />
                   </span>
