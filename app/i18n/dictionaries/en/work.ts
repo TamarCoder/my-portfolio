@@ -37,6 +37,8 @@ export const work: WorkText = {
     liveDemo: "Live demo",
     sourceCode: "Source code",
     privateCode: "Private company code",
+    watchIntro: "Watch intro",
+    closeVideo: "Close video",
     screensSoon: "Screens soon",
     items: {
       wegridsWeb: { category: "Gaming platform · Web", description: "Customer-facing web app for the WeGrids gaming platform. As the sole frontend developer I own the whole architecture — live game streaming, short-form reels, tournaments, leaderboards and creator monetization.", highlights: ["Live streaming & chat", "Reels & stories", "Tournaments & brackets", "Real-time messenger"] },

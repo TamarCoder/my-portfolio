@@ -12,6 +12,8 @@ export interface Project {
   screens: string[];
   github: string | null;
   live: string | null;
+  // Short intro video (vertical), opened in a modal.
+  video?: string;
 }
 
 export const projects: Project[] = [
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/TamarCoder/watchnext",
     live: null,
+    video: "/projects/Watchnext/intro.mp4",
   },
   {
     id: "billo",

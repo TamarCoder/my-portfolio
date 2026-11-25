@@ -75,6 +75,8 @@ export interface WorkText {
     liveDemo: string;
     sourceCode: string;
     privateCode: string;
+    watchIntro: string;
+    closeVideo: string;
     screensSoon: string;
     items: Record<ProjectId, { category: string; description: string; highlights: string[] }>;
   };
