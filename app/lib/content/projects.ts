@@ -53,6 +53,23 @@ export const projects: Project[] = [
     live: null,
   },
   {
+    id: "watchnext",
+    title: "Watchnext",
+    tags: ["React Native", "Expo", "TypeScript", "TMDB API", "Unit tests", "CI"],
+    device: "phone",
+    // The first three are shown: center, left, right.
+    screens: [
+      "/projects/Watchnext/home-dark.jpg",
+      "/projects/Watchnext/movie-dark.jpg",
+      "/projects/Watchnext/person-light.jpg",
+      "/projects/Watchnext/tv-home-light.jpg",
+      "/projects/Watchnext/tv-details-dark.jpg",
+      "/projects/Watchnext/genre-dark.jpg",
+    ],
+    github: "https://github.com/TamarCoder/watchnext",
+    live: null,
+  },
+  {
     id: "billo",
     title: "Billo",
     tags: ["React 19", "TypeScript", "Vite", "Electron", "Sass", "NestJS API"],
