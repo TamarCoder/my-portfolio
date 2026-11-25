@@ -59,12 +59,12 @@ export const projects: Project[] = [
     title: "Watchnext",
     tags: ["React Native", "Expo", "TypeScript", "TMDB API", "Unit tests", "CI"],
     device: "phone",
-    // The first three are shown: center, left, right.
+    // With a video, the first four sit behind it: far left, near left, near right, far right.
     screens: [
       "/projects/Watchnext/home-dark.jpg",
+      "/projects/Watchnext/tv-home-light.jpg",
       "/projects/Watchnext/movie-dark.jpg",
       "/projects/Watchnext/person-light.jpg",
-      "/projects/Watchnext/tv-home-light.jpg",
       "/projects/Watchnext/tv-details-dark.jpg",
       "/projects/Watchnext/genre-dark.jpg",
     ],
