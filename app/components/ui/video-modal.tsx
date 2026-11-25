@@ -9,9 +9,10 @@ interface VideoModalProps {
   title: string;
   closeLabel: string;
   onClose: () => void;
+  isLandscape?: boolean;
 }
 
-export default function VideoModal({ src, title, closeLabel, onClose }: VideoModalProps) {
+export default function VideoModal({ src, title, closeLabel, onClose, isLandscape = false }: VideoModalProps) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -27,7 +28,7 @@ export default function VideoModal({ src, title, closeLabel, onClose }: VideoMod
       onClick={onClose}
       className="animate-fade-in-up fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-md"
     >
-      <div onClick={(e) => e.stopPropagation()} className="relative h-[min(85vh,820px)] aspect-[9/16] max-w-full">
+      <div onClick={(e) => e.stopPropagation()} className={`relative max-w-full ${isLandscape ? "aspect-video w-[min(90vw,1280px)] max-h-[85vh]" : "h-[min(85vh,820px)] aspect-[9/16]"}`}>
         <video
           src={src}
           autoPlay

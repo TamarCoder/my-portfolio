@@ -1,4 +1,6 @@
 import type { ProjectId } from "@/app/i18n/types";
+import { wegridsWeb, billo, priceteka } from "@/app/lib/content/web-projects";
+import { wegridsMobile, watchnext } from "@/app/lib/content/mobile-projects";
 
 type ProjectDevice = "phone" | "browser" | "showcase";
 
@@ -10,76 +12,12 @@ export interface Project {
   device: ProjectDevice;
   // Empty means screenshots are not added yet; the UI shows a placeholder.
   screens: string[];
+  // Width / height of the back screens in the browser video stage.
+  screenAspect?: number;
   github: string | null;
   live: string | null;
-  // Short intro video (vertical), opened in a modal.
+  // Short intro video, opened in a modal. Vertical for phones, landscape for browsers.
   video?: string;
 }
 
-export const projects: Project[] = [
-  {
-    id: "wegridsWeb",
-    title: "WeGrids Web",
-    tags: ["Angular 21", "SSR", "TypeScript", "SCSS", "Socket.IO", "Angular Material"],
-    device: "browser",
-    // First is the main browser screen; the rest float around it.
-    screens: [
-      "/projects/WeGrids/01-hero.png",
-      "/projects/WeGrids/04-tournaments.png",
-      "/projects/WeGrids/03-streaming.png",
-      "/projects/WeGrids/05-badges.png",
-      "/projects/WeGrids/06-social.png",
-    ],
-    github: null,
-    live: "https://www.wegrids.com",
-  },
-  {
-    id: "wegridsMobile",
-    title: "WeGrids Mobile",
-    tags: ["React Native", "Expo", "TypeScript", "Zustand", "React Query", "Socket.IO"],
-    device: "phone",
-    // The first three are shown: center, left, right.
-    screens: [
-      "/projects/WeGrids-Mobile/onboarding-streaming.jpg",
-      "/projects/WeGrids-Mobile/home.jpg",
-      "/projects/WeGrids-Mobile/profile.jpg",
-      "/projects/WeGrids-Mobile/wallet-settings.jpg",
-      "/projects/WeGrids-Mobile/sign-up.jpg",
-      "/projects/WeGrids-Mobile/onboarding-tournaments.jpg",
-      "/projects/WeGrids-Mobile/onboarding-reels.jpg",
-      "/projects/WeGrids-Mobile/onboarding-community.jpg",
-      "/projects/WeGrids-Mobile/onboarding-verification.jpg",
-      "/projects/WeGrids-Mobile/sign-in.jpg",
-    ],
-    github: null,
-    live: null,
-  },
-  {
-    id: "watchnext",
-    title: "Watchnext",
-    tags: ["React Native", "Expo", "TypeScript", "TMDB API", "Unit tests", "CI"],
-    device: "phone",
-    // With a video, the first four sit behind it: far left, near left, near right, far right.
-    screens: [
-      "/projects/Watchnext/home-dark.jpg",
-      "/projects/Watchnext/tv-home-light.jpg",
-      "/projects/Watchnext/movie-dark.jpg",
-      "/projects/Watchnext/person-light.jpg",
-      "/projects/Watchnext/tv-details-dark.jpg",
-      "/projects/Watchnext/genre-dark.jpg",
-    ],
-    github: "https://github.com/TamarCoder/watchnext",
-    live: null,
-    video: "/projects/Watchnext/intro.mp4",
-  },
-  {
-    id: "billo",
-    title: "Billo",
-    tags: ["React 19", "TypeScript", "Vite", "Electron", "Sass", "NestJS API"],
-    device: "browser",
-    screens: ["/projects/Billo/home.jpg"],
-    github: "https://github.com/TamarCoder/Billo",
-    live: "https://billo-three.vercel.app",
-  },
-];
-
+export const projects: Project[] = [wegridsWeb, wegridsMobile, watchnext, billo, priceteka];

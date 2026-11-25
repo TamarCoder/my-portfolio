@@ -62,7 +62,7 @@ export default function Projects() {
       </div>
 
       {videoOpen && project.video && (
-        <VideoModal src={project.video} title={project.title} closeLabel={t.projects.closeVideo} onClose={() => setVideoOpen(false)} />
+        <VideoModal src={project.video} title={project.title} closeLabel={t.projects.closeVideo} onClose={() => setVideoOpen(false)} isLandscape={project.device === "browser"} />
       )}
     </section>
   );
