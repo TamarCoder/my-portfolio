@@ -39,6 +39,7 @@ export const work: WorkText = {
     privateCode: "Закрытый код компании",
     watchIntro: "Watch intro",
     closeVideo: "Close video",
+    watchWithSound: "Watch with sound",
     screensSoon: "Скриншоты скоро",
     items: {
       wegridsWeb: { category: "Игровая платформа · Веб", description: "Веб-приложение игровой платформы WeGrids для пользователей. Как единственный frontend-разработчик, я отвечаю за всю архитектуру — стриминг игр, короткие рилсы, турниры, рейтинги и монетизацию авторов.", highlights: ["Стриминг и чат", "Рилсы и сторис", "Турниры и сетки", "Мессенджер в реальном времени"] },

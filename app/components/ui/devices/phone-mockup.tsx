@@ -6,10 +6,12 @@ interface PhoneMockupProps {
   alt: string;
   className?: string;
   children?: ReactNode;
+  // Layer drawn over the screen image, under the glass reflection.
+  overlay?: ReactNode;
 }
 
 // iPhone-style frame: titanium edge, black bezel, dynamic island, side buttons and a glass reflection.
-export default function PhoneMockup({ src, alt, className = "", children }: PhoneMockupProps) {
+export default function PhoneMockup({ src, alt, className = "", children, overlay }: PhoneMockupProps) {
   return (
     <div className={`relative aspect-[9/19.5] ${className}`}>
       <span className="absolute -left-[3px] top-[18%] h-[6%] w-[3px] rounded-l bg-zinc-600" />
@@ -24,6 +26,7 @@ export default function PhoneMockup({ src, alt, className = "", children }: Phon
             ) : (
               children
             )}
+            {overlay}
             <span className="absolute left-1/2 top-[1.8%] h-[3.6%] w-[32%] -translate-x-1/2 rounded-full bg-black" />
             <span className="pointer-events-none absolute inset-0 bg-linear-to-tr from-transparent via-transparent to-white/15" />
           </div>

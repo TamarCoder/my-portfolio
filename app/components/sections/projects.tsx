@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectDevices from "@/app/components/sections/project-devices";
 import ProjectInfo from "@/app/components/sections/project-info";
+import VideoModal from "@/app/components/ui/video-modal";
 import { projects } from "@/app/lib/content/projects";
 import { useLanguage } from "@/app/i18n/language-provider";
 
@@ -11,6 +12,8 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { t } = useLanguage();
   const project = projects[activeIndex];
+  const [videoOpen, setVideoOpen] = useState(false);
+  const openVideo = () => setVideoOpen(true);
   const goBy = (step: number) => setActiveIndex((i) => (i + step + projects.length) % projects.length);
 
   return (
@@ -39,10 +42,10 @@ export default function Projects() {
         <div className="relative grid flex-1 items-center gap-5 md:grid-cols-12 md:gap-8 lg:gap-10">
           <div className="pointer-events-none absolute left-1/4 top-1/2 h-[60%] w-[40%] -translate-y-1/2 rounded-full bg-accent/25 blur-[120px]" />
           <div key={project.id} className="animate-fade-in-up relative h-[34vh] md:col-span-7 md:h-full">
-            <ProjectDevices project={project} />
+            <ProjectDevices project={project} onPlayVideo={openVideo} />
           </div>
           <div className="relative md:col-span-5">
-            <ProjectInfo project={project} />
+            <ProjectInfo project={project} onPlayVideo={openVideo} />
             <div className="mt-5 flex items-center gap-4 md:mt-8">
               <button onClick={() => goBy(-1)} aria-label={t.projects.previous} className="glass flex h-11 w-11 items-center justify-center rounded-full hover:text-accent-light">
                 <ChevronLeft size={18} />
@@ -57,6 +60,10 @@ export default function Projects() {
           </div>
         </div>
       </div>
+
+      {videoOpen && project.video && (
+        <VideoModal src={project.video} title={project.title} closeLabel={t.projects.closeVideo} onClose={() => setVideoOpen(false)} />
+      )}
     </section>
   );
 }

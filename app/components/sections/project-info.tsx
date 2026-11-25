@@ -1,15 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Check, Code2, ExternalLink, Lock, Play } from "lucide-react";
 import type { Project } from "@/app/lib/content/projects";
 import { useLanguage } from "@/app/i18n/language-provider";
-import VideoModal from "@/app/components/ui/video-modal";
 
-export default function ProjectInfo({ project }: { project: Project }) {
+export default function ProjectInfo({ project, onPlayVideo }: { project: Project; onPlayVideo: () => void }) {
   const { t } = useLanguage();
   const text = t.projects.items[project.id];
-  const [videoOpen, setVideoOpen] = useState(false);
   return (
     <div key={project.id} className="animate-fade-in-up">
       <p className="mb-2 font-mono text-xs tracking-[0.25em] text-cyan-300 uppercase">{text.category}</p>
@@ -37,7 +34,7 @@ export default function ProjectInfo({ project }: { project: Project }) {
 
       <div className="flex flex-wrap gap-3">
         {project.video && (
-          <button type="button" onClick={() => setVideoOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-accent to-cyan-500 px-5 py-2.5 text-sm font-medium text-white transition-all hover:brightness-110">
+          <button type="button" onClick={onPlayVideo} className="animate-pulse-glow inline-flex items-center gap-2 rounded-full bg-linear-to-r from-accent to-cyan-500 px-5 py-2.5 text-sm font-medium text-white transition-all hover:brightness-110">
             <Play size={15} fill="currentColor" /> {t.projects.watchIntro}
           </button>
         )}
@@ -56,10 +53,6 @@ export default function ProjectInfo({ project }: { project: Project }) {
           </span>
         )}
       </div>
-
-      {videoOpen && project.video && (
-        <VideoModal src={project.video} title={project.title} closeLabel={t.projects.closeVideo} onClose={() => setVideoOpen(false)} />
-      )}
     </div>
   );
 }

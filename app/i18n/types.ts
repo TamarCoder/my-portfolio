@@ -77,6 +77,7 @@ export interface WorkText {
     privateCode: string;
     watchIntro: string;
     closeVideo: string;
+    watchWithSound: string;
     screensSoon: string;
     items: Record<ProjectId, { category: string; description: string; highlights: string[] }>;
   };

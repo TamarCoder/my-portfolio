@@ -3,6 +3,7 @@
 import Image from "next/image";
 import PhoneMockup from "@/app/components/ui/devices/phone-mockup";
 import BrowserMockup from "@/app/components/ui/devices/browser-mockup";
+import PhoneVideoPreview from "@/app/components/ui/phone-video-preview";
 import BrowserCollage from "@/app/components/sections/browser-collage";
 import type { Project } from "@/app/lib/content/projects";
 import { useLanguage } from "@/app/i18n/language-provider";
@@ -18,7 +19,8 @@ function ScreensComingSoon() {
 }
 
 // Three phones fanned out in 3D: the middle one in front, the side ones turned toward it.
-function PhoneTrio({ project }: { project: Project }) {
+function PhoneTrio({ project, onPlayVideo }: DevicesProps) {
+  const { t } = useLanguage();
   const [center, left, right] = [0, 1, 2].map((i) => project.screens[i]);
   const placeholder = <ScreensComingSoon />;
   return (
@@ -33,17 +35,30 @@ function PhoneTrio({ project }: { project: Project }) {
           {placeholder}
         </PhoneMockup>
       </div>
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <PhoneMockup src={center} alt={`${project.title} screen 1`} className="animate-float w-[32%] max-w-64">
-          {placeholder}
-        </PhoneMockup>
+      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+        {project.video ? (
+          <button type="button" onClick={onPlayVideo} aria-label={t.projects.watchIntro} className="animate-float pointer-events-auto w-[32%] max-w-64 cursor-pointer">
+            <PhoneMockup src={center} alt={`${project.title} screen 1`} className="w-full" overlay={<PhoneVideoPreview src={project.video} label={t.projects.watchWithSound} />}>
+              {placeholder}
+            </PhoneMockup>
+          </button>
+        ) : (
+          <PhoneMockup src={center} alt={`${project.title} screen 1`} className="animate-float w-[32%] max-w-64">
+            {placeholder}
+          </PhoneMockup>
+        )}
       </div>
     </div>
   );
 }
 
-export default function ProjectDevices({ project }: { project: Project }) {
-  if (project.device === "phone") return <PhoneTrio project={project} />;
+interface DevicesProps {
+  project: Project;
+  onPlayVideo: () => void;
+}
+
+export default function ProjectDevices({ project, onPlayVideo }: DevicesProps) {
+  if (project.device === "phone") return <PhoneTrio project={project} onPlayVideo={onPlayVideo} />;
 
   if (project.device === "browser") {
     const host = project.live ? new URL(project.live).host : `${project.title.toLowerCase().replace(/\s+/g, "")}.app`;
