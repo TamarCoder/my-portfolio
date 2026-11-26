@@ -58,18 +58,18 @@ export const priceteka: Project = {
 
 export const flow: Project = {
   id: "flow",
-  title: "FLOW",
+  title: "FLOW — Plan less. Do more.",
   tags: ["Next.js 16", "React 19", "TypeScript", "Sass", "Radix UI", "SWR"],
   device: "browser",
   // Home is the video's still fallback and also one of the four back screens.
   screens: [
-    "/projects/Flow/home.png",
-    "/projects/Flow/dashboard.png",
-    "/projects/Flow/project-board.png",
-    "/projects/Flow/task-details.png",
+    "/projects/Flow/01-home-dark.png",
+    "/projects/Flow/02-dashboard.png",
+    "/projects/Flow/03-project-board.png",
+    "/projects/Flow/04-task-details.png",
   ],
   screenAspect: 16 / 10,
   github: "https://github.com/TamarCoder/Flow",
   live: "https://flow-zeta-three.vercel.app",
-  video: "/projects/Flow/intro.mp4",
+  video: "/projects/Flow/flow_intro_desktop.mp4",
 };
