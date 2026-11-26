@@ -1,5 +1,5 @@
 export type ServiceId = "frontend" | "mobile" | "webApps" | "performance" | "uiux" | "automation";
-export type ProjectId = "wegridsWeb" | "wegridsMobile" | "watchnext" | "billo" | "priceteka";
+export type ProjectId = "wegridsWeb" | "wegridsMobile" | "watchnext" | "billo" | "priceteka" | "flow";
 export type NavId = "home" | "about" | "services" | "skills" | "projects" | "contact";
 
 interface LabeledValue {

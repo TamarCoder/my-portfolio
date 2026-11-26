@@ -1,5 +1,5 @@
 import type { ProjectId } from "@/app/i18n/types";
-import { wegridsWeb, billo, priceteka } from "@/app/lib/content/web-projects";
+import { wegridsWeb, billo, priceteka, flow } from "@/app/lib/content/web-projects";
 import { wegridsMobile, watchnext } from "@/app/lib/content/mobile-projects";
 
 type ProjectDevice = "phone" | "browser" | "showcase";
@@ -20,4 +20,4 @@ export interface Project {
   video?: string;
 }
 
-export const projects: Project[] = [wegridsWeb, wegridsMobile, watchnext, billo, priceteka];
+export const projects: Project[] = [wegridsWeb, wegridsMobile, watchnext, billo, priceteka, flow];
