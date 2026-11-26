@@ -59,7 +59,7 @@ export const priceteka: Project = {
 export const flow: Project = {
   id: "flow",
   title: "FLOW — Plan less. Do more.",
-  tags: ["Next.js 16", "React 19", "TypeScript", "Sass", "Radix UI", "SWR"],
+  tags: ["Next.js 16", "React 19", "TypeScript", "Radix UI", "SWR", "React Hook Form", "Zod", "Sass"],
   device: "browser",
   // Home is the video's still fallback and also one of the four back screens.
   screens: [
